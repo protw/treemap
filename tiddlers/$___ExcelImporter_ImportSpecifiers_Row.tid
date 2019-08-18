@@ -1,0 +1,7 @@
+created: 20190809122407876
+import-spec-role: row
+list: $:/_ExcelImporter/ImportSpecifiers/Field [[$:/_ExcelImporter/ImportSpecifiers/Field 13]] [[$:/_ExcelImporter/ImportSpecifiers/Field 2]] [[$:/_ExcelImporter/ImportSpecifiers/Field 1]] [[$:/_ExcelImporter/ImportSpecifiers/Field 4]] [[$:/_ExcelImporter/ImportSpecifiers/Field 3]]
+modified: 20190809122446063
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Row
+

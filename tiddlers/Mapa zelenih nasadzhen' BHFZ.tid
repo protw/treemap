@@ -1,0 +1,14 @@
+created: 20190808183221738
+modified: 20190809112652840
+tags: 
+title: Мапа зелених насаджень БХФЗ
+
+<$leafmap 
+  tile='osm' 
+  places='{"filter":"[has[tree-type]]"}' 
+  cluster=0 
+  height=540px 
+  marker=pin 
+  zoom=17 
+  tileControl
+/>

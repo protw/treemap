@@ -1,0 +1,10 @@
+created: 20190809112805200
+import-field-column: Коорд дерева
+import-field-name: point
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+modified: 20190809112806348
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 2
+

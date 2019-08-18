@@ -1,0 +1,10 @@
+created: 20190809120946053
+import-field-column: Опис
+import-field-name: text
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+modified: 20190809121000426
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 10
+

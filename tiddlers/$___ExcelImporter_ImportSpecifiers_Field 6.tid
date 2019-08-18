@@ -1,0 +1,11 @@
+created: 20190809120705061
+import-field-column: Замовник
+import-field-name: client
+import-field-skip-tiddler-if-blank: yes
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+modified: 20190809121056601
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 6
+

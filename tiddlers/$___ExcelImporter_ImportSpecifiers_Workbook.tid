@@ -1,0 +1,8 @@
+caption: Таблиця дерев
+created: 20190809120430251
+import-spec-role: workbook
+list: [[$:/_ExcelImporter/ImportSpecifiers/Sheet 1]] $:/_ExcelImporter/ImportSpecifiers/Sheet
+modified: 20190809121608526
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Workbook
+

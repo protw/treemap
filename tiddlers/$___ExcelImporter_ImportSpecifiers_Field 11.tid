@@ -1,0 +1,10 @@
+created: 20190809121205388
+import-field-column: Завершення
+import-field-name: finish
+import-field-source: column
+import-field-type: date
+import-spec-role: field
+modified: 20190809121424044
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 11
+

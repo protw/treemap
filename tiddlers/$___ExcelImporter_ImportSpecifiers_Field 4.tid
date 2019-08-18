@@ -1,0 +1,8 @@
+import-field-column: Примітка
+import-field-name: text
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 4
+

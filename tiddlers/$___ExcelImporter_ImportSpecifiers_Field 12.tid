@@ -1,0 +1,12 @@
+created: 20190809122200317
+import-field-column: Column Name
+import-field-list-op: append
+import-field-name: tags
+import-field-source: constant
+import-field-type: string
+import-field-value: project
+import-spec-role: field
+modified: 20190809122711701
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 12
+

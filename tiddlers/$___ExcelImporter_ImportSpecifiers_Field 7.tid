@@ -1,0 +1,10 @@
+created: 20190809120756768
+import-field-column: Виконавець
+import-field-name: agent
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+modified: 20190809120817508
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 7
+

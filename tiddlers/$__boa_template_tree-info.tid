@@ -1,0 +1,9 @@
+created: 20190808190230342
+modified: 20190808190448575
+tags: 
+title: $:/boa/template/tree-info
+
+!! Дерево №: ''{{!!title}}''
+* Тип дерева: ''{{!!tree-type}}''
+* Координати: ''{{!!point}}''
+* Замовлення: ''{{!!proj-code}}''

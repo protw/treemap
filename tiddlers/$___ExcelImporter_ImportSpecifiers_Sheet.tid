@@ -1,0 +1,6 @@
+import-sheet-name: Таблиця дерев
+import-spec-role: sheet
+list: $:/_ExcelImporter/ImportSpecifiers/Row
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Sheet
+

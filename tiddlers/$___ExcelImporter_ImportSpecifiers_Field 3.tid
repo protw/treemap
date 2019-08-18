@@ -1,0 +1,8 @@
+import-field-column: Код проекту
+import-field-name: proj-code
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 3
+

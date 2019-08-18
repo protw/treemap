@@ -1,0 +1,11 @@
+created: 20190809120821143
+import-field-column: Договір
+import-field-name: contract
+import-field-skip-tiddler-if-blank: yes
+import-field-source: column
+import-field-type: string
+import-spec-role: field
+modified: 20190809121327785
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 8
+

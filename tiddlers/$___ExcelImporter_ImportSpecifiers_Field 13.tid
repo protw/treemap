@@ -1,0 +1,11 @@
+created: 20190809122407876
+import-field-column: Column Name
+import-field-name: tags
+import-field-source: constant
+import-field-type: string
+import-field-value: tree
+import-spec-role: field
+modified: 20190809122730662
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 13
+

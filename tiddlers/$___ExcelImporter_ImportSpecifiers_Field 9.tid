@@ -1,0 +1,10 @@
+created: 20190809120843614
+import-field-column: Початок
+import-field-name: start
+import-field-source: column
+import-field-type: date
+import-spec-role: field
+modified: 20190809121226148
+tags: 
+title: $:/_ExcelImporter/ImportSpecifiers/Field 9
+
