@@ -1,5 +1,5 @@
 created: 20170104195303693
-modified: 20190817074104347
+modified: 20190818095909977
 tags: 
 title: $:/boa/subtitle
 type: text/vnd.tiddlywiki
@@ -8,8 +8,8 @@ type: text/vnd.tiddlywiki
 <a href="$link$" title="$tooltip$" target="_blank"><div style="margin:4px 4px; text-align:center;float:left;">[img height=28px [$image$]]</div></a>
 \end
 
-\define feedback-link(wiki-address, wiki-name, feedback-icon)
-<a href="$wiki-address$/issues" title="Feedback on the '$wiki-name$' project via Github" target="_blank"><div style="margin:4px 4px; text-align:center;float:left;">[img height=28px [$feedback-icon$]]</div></a>
+\define feedback-link(wiki-github, wiki-name, feedback-icon)
+<a href="$wiki-github$/issues/new" title="Feedback on the '$wiki-name$' project via Github" target="_blank"><div style="margin:4px 4px; text-align:center;float:left;">[img height=28px [$feedback-icon$]]</div></a>
 \end
 
 <div style="clear:both;"/>
@@ -19,7 +19,7 @@ type: text/vnd.tiddlywiki
     "$:/boa/img/protw-logo.svg"
 >>
 <$macrocall $name="feedback-link" 
-    wiki-address={{$:/boa/logo!!wiki-address}} 
+    wiki-github={{$:/boa/logo!!wiki-github}} 
     wiki-name={{$:/boa/logo!!wiki-name}}
     feedback-icon="$:/boa/img/github-logo.svg"
 />

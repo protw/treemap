@@ -1,5 +1,5 @@
 created: 20190716071226253
-modified: 20190816184812642
+modified: 20190818101211303
 tags: 
 title: $:/boa/logo-edit
 
@@ -26,7 +26,7 @@ title: $:/boa/logo-edit
   .boa-table-comment { color: lightgrey; font-size: 95%; line-height: 100%; padding: 5px 5px 10px; width: 350px; }
 </style>
 
-!! Редагування загальних параметрів вікі
+!! Загальні параметри вікі
 
 <<edit-logo-field
   tid:"$:/boa/logo" 
@@ -56,25 +56,32 @@ title: $:/boa/logo-edit
   descr:"За цим параметром сортується список вікі"
 >>
 
-!! Перегляд інших загальних параметрів вікі
+!! Розташування вікі
 
-<<show-logo-field
+<<edit-logo-field
   tid:"$:/boa/logo" 
   lbl:"Веб-адреса вікі" 
   fld:"wiki-address" 
-  descr:"Повна веб-адреса вікі визначена у параметрах `wiki_domain` і `wiki_name` конфігураційного файлу `tw_build_conf.json`"
+  descr:"Повна веб-адреса опублікованої вікі визначена у параметрах `wiki_domain` і `wiki_name` з конфігураційного файлу `tw_build_conf.json`"
 >>
 
-<<show-logo-field
+<<edit-logo-field
+  tid:"$:/boa/logo" 
+  lbl:"//Github// репо вікі" 
+  fld:"wiki-github" 
+  descr:"Повна веб-адреса Github репозитарію (багатофайловий вихідний текст вікі у форматі Node.js) складається з двох частин `github_main` і `wiki_name` з конфігураційного файлу `tw_build_conf.json`"
+>>
+
+<<edit-logo-field
   tid:"$:/boa/logo" 
   lbl:"Дата створення вікі" 
   fld:"wiki-created" 
-  descr:"Формат дати: yyyymmddHHMMSSFFF, де //yyyy// - рік, //mm// - місяць, //dd// - день місяця, //HH// - годин, //MM// - хвилин, //SS// - секунд, //FFF// - мікросекунд"
+  descr:"Формат дати: `yyyymmddHHMMSSFFF`, де `yyyy` - рік, `mm` - місяць, `dd` - день місяця, `HH` - годин, `MM` - хвилин, `SS` - секунд, `FFF` - мікросекунд"
 >>
 
-<<show-logo-field
+<<edit-logo-field
   tid:"$:/boa/logo" 
   lbl:"Дата модифікації вікі" 
   fld:"wiki-modified" 
-  descr:""
+  descr:"Формат аналогічний до //Дата створення вікі//"
 >>
