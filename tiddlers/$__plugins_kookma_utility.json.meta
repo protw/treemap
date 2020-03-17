@@ -1,12 +1,12 @@
 author: Mohammad Rahmani
-core-version: >=5.1.19
+core-version: >=5.1.21
 created: 20190930044030716
 description: Utility
 list: readme license history
-modified: 20200210144501691
+modified: 20200316135033796
 plugin-type: plugin
 source: https://github.com/kookma/TW-Utility
 tags: 
 title: $:/plugins/kookma/utility
 type: application/json
-version: 1.7.3
+version: 2.0.0

@@ -1,0 +1,10 @@
+created: 20200317115053417
+modified: 20200317115106133
+tags: $:/tags/SideBarSegment
+title: $:/core/ui/SideBarSegments/tabs
+
+<div class="tc-sidebar-lists tc-sidebar-tabs">
+
+<$macrocall $name="tabs" tabsList="[all[shadows+tiddlers]tag[$:/tags/SideBar]!has[draft.of]]" default={{$:/config/DefaultSidebarTab}} state="$:/state/tab/sidebar" />
+
+</div>
