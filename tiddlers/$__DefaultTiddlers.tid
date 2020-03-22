@@ -1,5 +1,5 @@
 created: 20190702145748887
-modified: 20200306125055502
+modified: 20200322221139301
 tags: 
 title: $:/DefaultTiddlers
 type: text/vnd.tiddlywiki
@@ -8,3 +8,4 @@ type: text/vnd.tiddlywiki
 [[Скільки дерев у м. Києві?]]
 [[Мапа зелених насаджень БХФЗ]]
 [[План робіт за проектом TreeMap]]
+[[Визначення координат з допомогою API мап Google]]

@@ -420,6 +420,8 @@ Error message and password prompt
 
 <li>tree</li>
 
+<li>Визначення координат з допомогою API мап Google</li>
+
 <li>Інвентаризація зелених насаджень міста</li>
 
 <li>Мапа зелених насаджень БХФЗ</li>
@@ -1042,8 +1044,8 @@ viewBox=&quot;0 0 16909 16909&quot;
 <div created="20190809112526284" modified="20190809112526284" tags="" title="$:/config/plugins/tiddlywiki/xlsx-utils/default-import-spec" revision="0" bag="default">
 <pre>$:/_ExcelImporter/ImportSpecifiers/Workbook</pre>
 </div>
-<div created="20200317114029371" modified="20200317115803351" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions" revision="0" bag="default">
-<pre>hide</pre>
+<div created="20200317114029371" modified="20200322220252653" title="$:/config/ViewToolbarButtons/Visibility/$:/core/ui/Buttons/more-tiddler-actions" revision="0" bag="default">
+<pre>show</pre>
 </div>
 <div created="20200115125420174" modified="20200115125420175" title="$:/config/WikiParserRules/Inline/wikilink" revision="0" bag="default">
 <pre>disable</pre>
@@ -10241,12 +10243,12 @@ viewBox=&quot;0 0 16909 16909&quot;
     }
 }</pre>
 </div>
-<div caption="{{$:/language/SideBar/More/Caption}}" created="20200317114636434" modified="20200317115918249" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/More" revision="0" bag="default">
+<div caption="{{$:/language/SideBar/More/Caption}}" created="20200317114636434" modified="20200322215533734" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/More" revision="0" bag="default">
 <pre>&lt;div class=&quot;tc-more-sidebar&quot;&gt;
 &lt;$macrocall $name=&quot;tabs&quot; tabsList=&quot;[all[shadows+tiddlers]tag[$:/tags/MoreSideBar]!has[draft.of]]&quot; default={{$:/config/DefaultMoreSidebarTab}} state=&quot;$:/state/tab/moresidebar&quot; class=&quot;tc-vertical&quot; /&gt;
 &lt;/div&gt;</pre>
 </div>
-<div caption="{{$:/language/SideBar/Open/Caption}}" modified="20200317115805166" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Open" revision="0" bag="default">
+<div caption="{{$:/language/SideBar/Open/Caption}}" created="20200322220250376" modified="20200322220250376" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Open" revision="0" bag="default">
 <pre>\whitespace trim
 \define lingo-base() $:/language/CloseAll/
 
@@ -10282,11 +10284,11 @@ $button$
 &lt;/div&gt;
 </pre>
 </div>
-<div caption="{{$:/language/SideBar/Recent/Caption}}" created="20200317114641543" modified="20200317115805166" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Recent" revision="0" bag="default">
+<div caption="{{$:/language/SideBar/Recent/Caption}}" created="20200317114641543" modified="20200322220249519" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Recent" revision="0" bag="default">
 <pre>&lt;$macrocall $name=&quot;timeline&quot; format={{$:/language/RecentChanges/DateFormat}}/&gt;
 </pre>
 </div>
-<div caption="{{$:/language/SideBar/Tools/Caption}}" created="20200317114638242" modified="20200317115917041" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Tools" revision="0" bag="default">
+<div caption="{{$:/language/SideBar/Tools/Caption}}" created="20200317114638242" modified="20200322220248509" tags="$:/tags/SideBar" title="$:/core/ui/SideBar/Tools" revision="0" bag="default">
 <pre>\define lingo-base() $:/language/ControlPanel/
 \define config-title()
 $:/config/PageControlButtons/Visibility/$(listItem)$
@@ -10408,11 +10410,12 @@ $:/config/PageControlButtons/Visibility/$(listItem)$
 &lt;/$reveal&gt;
 </pre>
 </div>
-<div created="20190702145748887" modified="20200306125055502" tags="" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
+<div created="20190702145748887" modified="20200322221139301" tags="" title="$:/DefaultTiddlers" type="text/vnd.tiddlywiki" revision="0" bag="default">
 <pre>[[Інвентаризація зелених насаджень міста]]
 [[Скільки дерев у м. Києві?]]
 [[Мапа зелених насаджень БХФЗ]]
-[[План робіт за проектом TreeMap]]</pre>
+[[План робіт за проектом TreeMap]]
+[[Визначення координат з допомогою API мап Google]]</pre>
 </div>
 <div created="20190808132107949" modified="20190808132117060" tags="" title="$:/favicon.ico" type="image/x-icon" revision="0" bag="default">
 <pre>AAABAAEAQEAAAAAAAAAoFgAAFgAAACgAAABAAAAAgAAAAAEACAAAAAAAABIAAAAAAAAAAAAAAAAAAAAAAAD///8A9/f3AO/v7wDm5uYAzubeAN7e3gDF3tYA1tbWALXW1gC13sUAtdbOAK3evQDOzs4AvcXeAK3WvQCl1r0Apda1ALW93gCc1rUAxcXFAK291gBz5pQAlM6tAJTFvQCltdYAvb29AJTOpQCMzqUAjM6cAITOnAC1tbUAhM6UAIS9rQCExZwAe8WcAJSlzgB7xZQAc8WUAK2trQBzvZQAc72MAGu9jAClpaUAa72EAGO9hACElMUAY717AGO1hABapaUAa3vvAJycnABatXsAa4zFAELFYwBSvWsAOsVjAHOMvQBKvWsAY3PvADrFWgBCnKUAMcVaADqthACUlJQAOrVzADq9YwBKlK0ASrVrAFpz5gBCpYwAMb1jAFKExQBjY/8AOq17ADq1awBKhMUASpSlAFpr7wBac94AQqWEADG9WgBCnJQAUnPeAFJ7zgBKhL0ASoytAFpj9wBaa+YAMbVjADG9UgBSc9YAWmPvAIyMjABKe8UAQq1jAEp7vQAxtVIAKZyEADqtWgBChKUASnutAEKEnAAprVIAKa1KADqUcwAxpVIAMZxjACmlUgAxnFoAKaVKACmcWgAhe5wAKZRjABljvQAZc5wAGWO1AEJjpQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABc4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4ODg4OBdLXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1LXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV1dXV9fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX19fX190dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0dHR0Y2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjYxUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVHxUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVHx4VFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFRUVFR4ABxYgICAgICAgICAgICAgICAgICAgICAgICAgICAwPDwwICAgICAgICAgICAgICAgICAgICAgICAgICAgFgcAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAc3NzcwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHNzc3MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzc3NzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAVcIisnISoBAAAAAAAAAAM/c3Nzcz8DAAAAAAAAAAEqIScrIlwFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEy9pbW1tbW1taSECAAAABSlpbXNzc3NtaSkFAAAAAiFpbW1tbW1taS8EAAAAAAAAAAAAAAAAAAAAAAAAAAAAGmltbW1tbW1tbW1tXhMAMmltbW1zc3NzbW1taTIAE15tbW1tbW1tbW1taRoAAAAAAAAAAAAAAAAAAAAAAAAAJ21tbW1tbW1tbW1tbW1pIWltbW1tc3Nzc21tbW1pIWltbW1tbW1tbW1tbW1tJwAAAAAAAAAAAAAAAAAAAAAAEm1tbW1tbW1tbW1tbW1tbW1tbW1tbXNzc3NtbW1tbW1tbW1tbW1oZGRqbW1tbW0SAAAAAAAAAAAAAAAAAAAABWltbW1tbW1tbW1tbW1tbW1tbW1tbW1zc3NzbW1tbW1tbW1tbW1qW1ZWTWxtbW1taQUAAAAAAAAAAAAAAAAAACFtbW1tbWZgUFBQYGBpbW1tbW1tbWZgc3Nzc2BmbW1tbW1tbWlgVVZWVlZlbW1tbW0hAAAAAAAAAAAAAAAAAABibW1tZlBQUFBQUFBQUGBpbW1tZlBQUHNzc3NQUFBmbW1taWBQUExWVlZWUVBmbW1tYgAAAAAAAAAAAAAAAAAMbW1tYFBQUFBQUFBQUFBQUFBgUFBQUG9zc3NzUFBQUFBgUFBQUFBKTlZWWlBQUGBtbW0MAAAAAAAAAAAAAAAAKm1tYFBQUFBQUFBQUFBQUFBQUFBQUG9zc3Nzc1BQUFBQUFBQUFBQUFBFT1BQUFBQYG1tKgAAAAAAAAAAAAAAADJtYFBQUFBQUFBQUFBQUFBQUFBQUG9zc3Nzc3NQUFBQUFBQUFBQUFBQUFBQUFBQUFBgbTIAAAAAAAAAAAAAAAAmaVBQUFBQUFBQUFBQUFBQUFBQUG9zc3Nzc3NzWFBQUFBQUFBQUFBQUFBQUFBQUFBQUGkmAAAAAAAAAAAAAAAADGBQUFBQUFBQUFBQUFBQUFBQUG9zc3Nzc3Nzc3NYUFBQUFBQUFBQUFBQUFBQUFBQUFBgDAAAAAAAAAAAAAAAAABDUFBQUFBQUFBQUFBQUFBQUG9zc3NzcnNzc3Nzc1hQUFBQUFBQUFBQUFBQUFBQUFBQQwAAAAAAAAAAAAAAAAAAIVBQUFBQUFBQUFBQUGBtbW1ucnNzckFzc3Nzc3NzWFBQUFBQUFBQUFBQUFBQUFBQUCEAAAAAAAAAAAAAAAAAAAM1UFBQUFBQUFBQUFBtbWZpbWtyckFQc3Nzc3Nzc3NYUFBQUFBQUFBQUFBQUFBQUDUDAAAAAAAAAAAAAAAAAAAAEFBQUFBQUFBQUFBQYFBQUGBtbkFQUHNzc3Nzc3Nzc1hQUFBQUFBQUFBQUFBQUFAQAAAAAAAAAAAAAAAAAAAAAAAhUFBPSVBQUFBQUFBQUFBQaW1QUFBzc3NzYXNzc3NzWFBQUFBQUFBQUFBQUFAhAAAAAAAAAAAAAAAAAAAAAAAAACBOVlZHUFBQUFBQUFBQUGltUFBQc3Nzc1Bhc3Nzc3NYUFBQUFBQUFBQUDsWAAAAAAAAAAAAAAAAAAAAAAAAAAAjVlZWVk9QUFBQUFBQUGBtaVBQUHNzc3NQUGFzc3Nybm1taWBQUFBQOysMAAAAAAAAAAAAAAAAAAAAAAAAAAAALVZWVlZRUFBQUFBQUFBgbWBQUFBzc3NzUFBQYXNya21paW1tUFBQUA8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAhIVlZNSlBQUFBQUFBQUFBQUFBQcGttbmBQUFBhcG1gUFBQYFBQUFAzAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADTRUQFBQUFBQUFBQUFBQUFBQbW1paW1tYFBQUG1pUFBQUFBQUFBQOwUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAOUFBQUFBQUFBQUFBQUFBQaW1gUFBgbWlQUFBtaVBQUFBQUFBQUFAOAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAFlBQUFBQUFBQUFBQUFBBT2ppUFBQUGZtYFBQaW1QUFBQUFBQUFBQFgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABxQUFBQUFBQUFBQUFBPTVZWUVBQUFBgZlBQUGBtYFBQUFBQUFBQUBsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWUFBQUFBQUFBQUFBQTlZWVltQUFBQUFBQUFBQUFBQUFBQUFBQUFAWAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACVBQUFBQUFBQUFBQUFdWVlZWQVBQUFBQUFBQUFBQUFBQUFBQUFBQKgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM7UFBQUFBQUFBQUFBVVlZWU1BQUFBQUFBQUFBQUFBQUFBQUFBQOwMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAK1BQUFBQUFBQUFBQUExTVUFQUFBQUFBQUFBQUFBQUFBQUFBQUCsAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABM7UFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUDsTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIVBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFAhAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFAoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABw7UFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUEBCQkohAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEys7UFBQUFBQUFBQUFBQUFBQUFBQUFBQUEBbVlY6AwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHlBQUFBQUFBQUFBQUFBQUFBQUFBQUFBVVlZWVhQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABlQUFBQUFBQUFBQUFBQUFBQUFBQUFBQQlZWVlYUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADPVBQUFBQUFBQUFBQUFBQUFBQUFBQUEpNVlYxAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADZQUFBQUFBQUFBQUFBQUFBQUFBQUFBQNhgUAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkUFBQUFBQUFBQUFBQUFBQUFBQUFBQUCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEz1QUFBQUFBQUFBQUFBQUFBQUFBQUDsTAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAvUFBQUFBQUFBQUFBQUFBQUFBQUFAvAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABzVQUFBQUFBQUFBQUFBQUFBQUFBBBwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKO1BQUFBQUFBQUFBQUFBQUFA7CgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA87UFBQUFBQUFBQUFBQUFA7DwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABjZQUFBQUFBQUFBQUFA2HgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACFkNQUFBQUFBQUEMWAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABHiErLi4rIR4BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</pre>
@@ -10990,7 +10993,7 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 <div created="20190711192532707" modified="20190712102009839" tags="" title="$:/SiteTitle" revision="0" bag="default">
 <pre>{{$:/boa/title}}</pre>
 </div>
-<div list="[[Інвентаризація зелених насаджень міста]] [[Скільки дерев у м. Києві?]] [[Мапа зелених насаджень БХФЗ]] [[План робіт за проектом TreeMap]]" title="$:/StoryList" revision="1" bag="default">
+<div list="[[Інвентаризація зелених насаджень міста]] [[Скільки дерев у м. Києві?]] [[Мапа зелених насаджень БХФЗ]] [[План робіт за проектом TreeMap]] [[Визначення координат з допомогою API мап Google]]" title="$:/StoryList" revision="1" bag="default">
 <pre></pre>
 </div>
 <div plugin-type="info" title="$:/temp/info-plugin" type="application/json" revision="0" bag="default">
@@ -11301,6 +11304,30 @@ $value={{$:/temp/newfieldvalue}}/&gt;
 </div>
 <div color="#009500" created="20190809123242635" icon="$:/boa/img/fa5/tree" modified="20190809123334578" tags="" title="tree" revision="0" bag="default">
 <pre></pre>
+</div>
+<div created="20200322214805165" modified="20200322221055319" tags="" title="Визначення координат з допомогою API мап Google" revision="0" bag="default">
+<pre>!! ПРИНЦИП
+
+Координати, пов’язані з панорамою, - це широта та довгота референтного еліпсоїда //WGS84// центру панорами, доступ до яких можна отримати з допомогою //JavaScript API Google Maps//, зокрема з допомогою методу &lt;&lt;mono getLatLng()&gt;&gt; у класі &lt;&lt;mono StreetviewLocation&gt;&gt;. Напрямок руху автомобіля відносно справжньої півночі, тобто &lt;&lt;mono pano_yaw (φ)&gt;&gt; можна також визначити, використовуючи метод &lt;&lt;mono getYaw()&gt;&gt; для камери у класі //Pov//, доступ до якого можна отримати з допомогою методу &lt;&lt;mono getPov()&gt;&gt; у класі &lt;&lt;mono StreetviewLocation&gt;&gt; для початкової точки зору. Тим часом висоту (висоту відносно поверхні еліпсоїда) початкової точки зору можна отримати за допомогою //API Google Elevation// у веб-службах //API Google Maps//, наприклад, &lt;&lt;mono google.maps.ElevationService()&gt;&gt;.
+
+Якщо вказати курсором у збільшеній панорамі на точку інтересу (або //POI//), то ця точка може бути представлена з азимуту (або //heading//, θ,,P,,) та та кута під підйому (або //pitch//, γ,,P,,) класу //StreetviewPov//. //POI// може бути будівлею, дорожнім знаком або іншим конкретним об'єктом, щодо якого слід визначити його розташування у тривимірному просторі шляхом перетину з двох перекритих панорам //GSV// (//Google Street View//). Це може бути позначена точка, вже розміщена в сервлеті //GAE// (//Google App Engine//), з власними координатами, доступ до яких отримує клас &lt;&lt;mono StreetviewLocation&gt;&gt; для обчислення положення центру експозиції панорами шляхом резекції принаймні трьох відомих точок.
+
+!! СКОРОЧЕННЯ
+
+|table-borderless|k
+|!Term |!Explanation |
+|^//GAE// |^Google App Engine |
+|^//GSV// |^Google Street View |
+|^//heading// |^азимутальний кут |
+|^//pitch// |^кут підйому (вертикальний кут) |
+|^//POI// |^point of interest, точка інтересу |
+|^//POV// |^point of view, точка зору |
+|^//WGS84// |^[[Світова геодезична система|https://uk.wikipedia.org/wiki/Світова_геодезична_система]] |
+
+!! ПОСИЛАННЯ
+
+# Victor J.D. Tsai, Chun-Ting Chang. Three-dimensional positioning from Google street view panoramas. IET Image Processing, 2012 (doi: 10.1049/iet-ipr.2012.0323)
+</pre>
 </div>
 <div created="20200301172929951" modified="20200309190123570" tags="" title="Інвентаризація зелених насаджень міста" revision="0" bag="default">
 <pre>Проєктна ідея //{{!!title}}// полягає у автоматизації процесу збирання інформації про наявні у місті зелені насадження, як-то: координати, розміри, порода, стан дерева, а також зручному пошуку і перегляді дерев на карті за різними критеріями, обліку і плануванні заходів по конкретних деревах. Запропоновані технології будуть корисні і затребувані як працівниками комунальних підприємств, що опікуються зеленими насадженнями, а також мешканцями. 
