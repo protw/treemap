@@ -1,5 +1,5 @@
 created: 20200322214805165
-modified: 20200323084900502
+modified: 20200324071835315
 tags: 
 title: Визначення координат з допомогою API мап Google
 
@@ -29,6 +29,10 @@ title: Визначення координат з допомогою API мап 
 
 !! ПОСИЛАННЯ
 
-# Victor J.D. Tsai, Chun-Ting Chang. Three-dimensional positioning from Google street view panoramas. IET Image Processing, 2012 ([[doi: 10.1049/iet-ipr.2012.0323|http://www.ce.nchu.edu.tw/Pic/Writings/2102_IPR-2012-0323-PROOF-Final.pdf]])
-# Tim Rodham. Get heading and pitch from pixels on Street View / Stackoverflow, https://stackoverflow.com/questions/21591462/get-heading-and-pitch-from-pixels-on-street-view
-# S. Branson, J. D. Wegner, D. Hall, N. Lang, K. Schindler, P. Perona. From Google Maps to a Fine-Grained Catalog of Street trees / Computer Science, Mathematics, published in ArXiv 2018 ([[DOI:10.1016/j.isprsjprs.2017.11.008|https://www.semanticscholar.org/paper/From-Google-Maps-to-a-Fine-Grained-Catalog-of-trees-Branson-Wegner/7d3d29dfb4267953636a6c2bfaf990bb05a9b1dd]])
+# Three-dimensional positioning from Google street view panoramas / Victor J.D. Tsai, Chun-Ting Chang. IET Image Processing, 2012 ([[doi: 10.1049/iet-ipr.2012.0323|http://www.ce.nchu.edu.tw/Pic/Writings/2102_IPR-2012-0323-PROOF-Final.pdf]]).
+# [[Get heading and pitch from pixels on Street View|https://stackoverflow.com/questions/21591462/get-heading-and-pitch-from-pixels-on-street-view]] / Tim Rodham. Stackoverflow.
+# From Google Maps to a Fine-Grained Catalog of Street trees / S. Branson, J. D. Wegner, D. Hall, N. Lang, K. Schindler, P. Perona. Computer Science, Mathematics, published in ArXiv 2018 ([[DOI:10.1016/j.isprsjprs.2017.11.008|https://www.semanticscholar.org/paper/From-Google-Maps-to-a-Fine-Grained-Catalog-of-trees-Branson-Wegner/7d3d29dfb4267953636a6c2bfaf990bb05a9b1dd]]).
+
+!! ДОТИЧНІ КОРИСНІ МАТЕРІАЛИ
+
+# [[360-degrees Panoramic Photos Cubemap with Calibration|https://medium.com/lastmile-dynamo/360-degrees-panoramic-photos-cubemap-with-calibration-b4959bad10d3]] / Jun Yoshida, Jul 26, 2019. medium.com.
