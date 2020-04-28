@@ -1,5 +1,5 @@
 created: 20190702145748887
-modified: 20200422164142307
+modified: 20200428155247410
 tags: 
 title: $:/DefaultTiddlers
 type: text/vnd.tiddlywiki
@@ -10,3 +10,5 @@ type: text/vnd.tiddlywiki
 [[План робіт за проектом TreeMap]]
 [[Визначення координат з допомогою API мап Google]]
 [[Математика сферичного трикутника]]
+[[Визначення висоти дерева]]
+[[Визначення ширини стовбура]]
