@@ -1,6 +1,6 @@
 created: 20200610083716703
 icon: $:/boa/logo
-modified: 20200610195242531
+modified: 20200610200947209
 title: Всі статті
 
 <div style="float:right;margin:0px 15px 15px;">
@@ -8,7 +8,7 @@ title: Всі статті
 </div>
 
 @@font-size:16pt;<<doc-svg $:/boa/img/icons/tag.svg>>@@<<hspace 10px>><$list filter="concept project soft team tool" variable="item">
-<<item>> <$checklist tiddler="$:/boa/filtering/by-tags-list" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
+<<item>>&nbsp;<$checklist tiddler="$:/boa/filtering/by-tags-list" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
 
 ---
 
