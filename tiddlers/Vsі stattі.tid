@@ -1,13 +1,13 @@
 created: 20200610083716703
 icon: $:/boa/logo
-modified: 20200610193211768
+modified: 20200610195242531
 title: Всі статті
 
 <div style="float:right;margin:0px 15px 15px;">
 <$button class="tc-btn-invisible" tooltip="Зняти всі відмітки"><$action-setfield $tiddler="$:/boa/filtering/by-tags-list" $index="tag-list" $value=""/>{{$:/boa/img/erase}}</$button>
 </div>
 
-<$list filter="concept project soft team tool" variable="item">
+@@font-size:16pt;<<doc-svg $:/boa/img/icons/tag.svg>>@@<<hspace 10px>><$list filter="concept project soft team tool" variable="item">
 <<item>> <$checklist tiddler="$:/boa/filtering/by-tags-list" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
 
 ---
