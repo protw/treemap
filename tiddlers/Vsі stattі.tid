@@ -1,0 +1,22 @@
+created: 20200610083716703
+icon: $:/boa/logo
+modified: 20200610191724377
+title: Всі статті
+
+<div style="float:right;margin:0px 15px 15px;">
+<$button class="tc-btn-invisible" tooltip="Зняти всі відмітки"><$action-setfield $tiddler="$:/boa/filtering/by-tags-list" $index="tag-list" $value=""/>{{$:/boa/img/erase}}</$button>
+</div>
+
+<$list filter="concept project soft team tool" variable="item">
+<<item>> <$checklist tiddler="$:/boa/filtering/by-tags-list" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
+
+---
+
+<$set name="myList" value={{$:/boa/filtering/by-tags-list##tag-list}}>
+
+<$list filter="[enlist<myList>tagging[]!is[system]!tag[tree]!is[image]!has[draft.of]!sort[created]] -tree -project -[[Всі статті]]" template="$:/boa/template/catalog-treemap">
+
+</$list>
+</$set>
+
+
