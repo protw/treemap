@@ -1,10 +1,10 @@
 created: 20181205073534349
-modified: 20200610192609333
+modified: 20200611181224256
 tags: 
 title: $:/boa/title
 type: text/vnd.tiddlywiki
 
-<div style="margin-top:-34px;">
+<div style="margin-top:-14px;">
 <a href={{$:/boa/logo!!wiki-address}} title={{$:/boa/logo!!wiki-caption}}>[img width=205px [$:/boa/logo]]</a><br/>
 </div>
 <span style="display:none;">TREEMAP</span>
