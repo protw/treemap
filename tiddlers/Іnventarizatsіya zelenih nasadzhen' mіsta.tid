@@ -1,16 +1,16 @@
 created: 20200610083716703
 icon: $:/boa/logo
-modified: 20200611181120011
+modified: 20200611221410147
 revision: 0
 title: Інвентаризація зелених насаджень міста
 
 {{$:/boa/filtering/set-sorting-order}}
 
 <div style="float:right;margin:0px 15px 15px;">
-<$button class="tc-btn-invisible" tooltip="Зняти всі відмітки"><$action-setfield $tiddler="$:/boa/filtering/by-tags-list" $index="tag-list" $value=""/>{{$:/boa/img/erase}}</$button>
+<$button class="tc-btn-invisible" tooltip="Зняти всі відмітки категорій"><$action-setfield $tiddler="$:/boa/filtering/by-tags-list" $index="tag-list" $value=""/>{{$:/boa/img/erase}}</$button>
 </div>
 
-@@font-size:16pt;<<doc-svg $:/boa/img/icons/tag.svg>>@@<<hspace 10px>><$list filter="concept project soft team tool" variable="item">
+<span style="font-size:16pt;" title="Вибір за категорією"><<doc-svg $:/boa/img/icons/tag.svg>></span><<hspace 10px>><$list filter="concept project soft team tool" variable="item">
 <<item>>&nbsp;<$checklist tiddler="$:/boa/filtering/by-tags-list" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
 
 ---
