@@ -1,0 +1,10 @@
+created: 20200613134440780
+modified: 20200613134541843
+tags: $:/tags/Macro
+title: $:/boa/template/videocast
+
+\define videocast(summary,status,video-index)
+<<details sum:''"$summary$"'' status:$status$ src:"""
+<iframe width="560" height="315" src="https://www.youtube.com/embed/$video-index$" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+""">>
+\end

@@ -1,13 +1,7 @@
 created: 20200612171627397
-modified: 20200612180633182
+modified: 20200613134553887
 tags: concept
 title: Демо методу реконструкції координат
-
-\define videocast(summary,status,video-index)
-<<details sum:''"$summary$"'' status:$status$ src:"""
-<iframe width="560" height="315" src="https://www.youtube.com/embed/$video-index$" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-""">>
-\end
 
 Для пояснення метода, запропонованого для вирішення задач реконструкції географічних координат об'єктів (дерев) з декількох позиціонованих панорамних зображень з допомогою Google Street View або інших аналогічних сервісів, на доповнення до базових статей [[Докладна ідея проєкту]], [[Визначення координат з допомогою API GSV]] і [[Математика сферичного трикутника]] нижче представлена трійка коротких відео.
 
