@@ -1,0 +1,20 @@
+created: 20200628184500235
+modified: 20200628184603894
+tags: $:/tags/Macro
+title: $:/boa/template/team-list
+
+\define flexgrid-image(filter)
+<div class="flex-row">
+<$list filter=<<__filter__>>>
+<div class="flex-col-1" style="min-height:180px">
+<$link to=<<currentTiddler>> >
+<$image source=<<currentTiddler>> />
+</$link>
+<$list filter="[<currentTiddler>split[.]limit[1]]" variable=name>
+<<name>>
+</$list>
+-- {{!!role}}
+</div>
+</$list>
+</div>
+\end
