@@ -1,0 +1,11 @@
+created: 20200630182245872
+list-before: $:/core/ui/SideBar/Open
+modified: 20200630190208568
+tags: $:/tags/SideBar
+title: Про проєкт
+
+<$link overrideClass="btn btn-success" to="Проєктна ідея">@@fill:white;<<doc-svg $:/boa/img/fa5/tree>>@@ ''Ідея проєкту''</$link>
+
+<$link overrideClass="btn btn-primary" to="Інвентаризація зелених насаджень міста">@@fill:white;<<doc-svg $:/boa/img/fa5/file>>@@ ''Каталог''</$link>
+
+<$link overrideClass="btn btn-info" to="Команда проєкту">@@fill:white;<<doc-svg $:/boa/img/fa5/user-friends>>@@ ''Команда''</$link>

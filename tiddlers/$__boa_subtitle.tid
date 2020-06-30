@@ -1,5 +1,5 @@
 created: 20170104195303693
-modified: 20200628191044072
+modified: 20200630190136459
 tags: 
 title: $:/boa/subtitle
 type: text/vnd.tiddlywiki
@@ -23,7 +23,5 @@ type: text/vnd.tiddlywiki
     wiki-name={{$:/boa/logo!!wiki-name}}
     feedback-icon="$:/boa/img/github-logo.svg"
 />
-<$link to="Команда проєкту" tooltip="Команда проєкту">
-@@font-size:28px;margin:4px;fill:BurlyWood;<<doc-svg $:/boa/img/fa5/user-friends>>@@
-</$link>
+
 <div style="clear:both;"/>
