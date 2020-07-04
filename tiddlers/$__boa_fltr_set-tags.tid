@@ -1,0 +1,22 @@
+created: 20200704155916700
+modified: 20200704182406465
+tags: 
+title: $:/boa/fltr/set-tags
+
+<$vars full-list={{$:/boa/fltr/vars##full-tag-list}}>
+
+<div style="float:left;font-size:16pt;" title="Вибір за категорією"><<doc-svg $:/boa/fltr/img/tag.svg>></div>
+
+<div style="float:left;margin:0px 15px;">
+<$reveal type="nomatch" stateTitle="$:/boa/fltr/vars" stateIndex="tag-list" text="">
+<$button class="tc-btn-invisible" tooltip="Зняти всі відмітки категорій"><$action-setfield $tiddler="$:/boa/fltr/vars" $index="tag-list" $value=""/>{{$:/boa/fltr/img/erase}}</$button>
+</$reveal>
+<$reveal type="match" stateTitle="$:/boa/fltr/vars" stateIndex="tag-list" text="">
+<$button class="tc-btn-invisible" tooltip="Відмітити всі категорії"><$action-setfield $tiddler="$:/boa/fltr/vars" $index="tag-list" $value=<<full-list>>/>{{$:/boa/fltr/img/check-square}}</$button>
+</$reveal>
+</div>
+
+<$list filter="[enlist<full-list>]" variable="item">
+<<item>>&nbsp;<$checklist tiddler="$:/boa/fltr/vars" index="tag-list" item=<<item>>/><<hspace width:"12px">></$list>
+
+</$vars>

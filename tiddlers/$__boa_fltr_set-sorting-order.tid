@@ -1,0 +1,19 @@
+created: 20200704161655662
+modified: 20200704185050907
+priority: high
+tags: 
+title: $:/boa/fltr/set-sorting-order
+
+<div style="float:right;margin:0px 15px 15px;">
+<<hspace 45px>>
+<span style="font-size:16pt;" title="Сотрування за датою створення"><<doc-svg $:/boa/fltr/img/calendar.svg>></span><<hspace 8px>>
+<$checklist tiddler="$:/boa/fltr/vars" index="sorting-order" item="latest-first">&nbsp;</$checklist>
+
+<$reveal type="match" text="latest-first" stateTitle="$:/boa/fltr/vars" stateIndex="sorting-order">
+<span title="Найпізніше - першим"><<doc-svg $:/boa/fltr/img/sort-amount-down>></span>
+</$reveal>
+
+<$reveal type="nomatch" text="latest-first" stateTitle="$:/boa/fltr/vars" stateIndex="sorting-order">
+<span title="Найраніше - першим"><<doc-svg $:/boa/fltr/img/sort-amount-up>></span>
+</$reveal>
+</div>
