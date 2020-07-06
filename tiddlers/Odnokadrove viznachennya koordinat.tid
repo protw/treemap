@@ -1,5 +1,5 @@
 created: 20200618174159413
-modified: 20200628162914763
+modified: 20200706045740532
 tags: concept
 title: Однокадрове визначення координат
 
@@ -24,8 +24,8 @@ title: Однокадрове визначення координат
 
 $$
 p_d = 180/M \\
-\phi = p_d (n - 0.5 - M) \\
-\theta = p_d (m - 0.5 - M/2)
+\phi = p_d (n - M) \\
+\theta = p_d (M/2 - m)
 $$
 
 <<alert-warning """
