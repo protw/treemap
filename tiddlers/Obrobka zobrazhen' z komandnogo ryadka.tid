@@ -1,5 +1,5 @@
 created: 20200628075027994
-modified: 20200628092737352
+modified: 20200712152248462
 tags: soft tool
 title: Обробка зображень з командного рядка
 
@@ -30,3 +30,56 @@ title: Обробка зображень з командного рядка
 * Додавати час зйомки зображення або GPS-мітки із CSV-файлу.
 * Обробляти копії оригінального зображення (замість редагування оригіналів).
 * Є можливості з інтерполяції часових міток або GPS-міток зображень, а також вивантаження зображень на локальний комп'ютер з дотриманням заданих умов.
+
+!! ВСТАНОВЛЕННЯ
+
+Виконайте наступні команди для встановлення <<mono mapillary_tools>>:
+
+```
+> pip install git+https://github.com/mapillary/Piexif
+> pip install --upgrade git+https://github.com/mapillary/mapillary_tools
+```
+
+Ви самостійно розберетесь зі встановленням <<mono python>> і <<mono pip>> - благо в Мережі матеріалу на цю тему не бракує.
+
+Хоча тут ви можете стикнутися з певною проблемою. Коли я почав запускати з командного рядка <<mono python>>, то отримав попередження, що його версія 2.7 вже більше не підтримується і потрібно перейти на версію 3 і вище. Це я власне і зробив. Але після відповідного оновлення <<mono python>> і <<mono pip>> я натрапив у іншу халепу: установник <<mono mapillary_tools>> повідомив мене, що працює з версіями <<mono python>> від 2.7, але строго менше 3.0. Це глухий кут.
+
+Прийшлося скористатися безпосереднім завантаженням з //git//-сховища [[Windows Package Installation|https://github.com/mapillary/mapillary_tools/#windows-package-installation]], де розміщене пряме посилання на скомпільований бінарний файл <<mono mapillary_tools>>:
+
+* https://tools.mapillary.com/binary/win/mapillary_tools.exe
+
+<<alert-warning "Після скачування додайте у змінну ОС <$macrocall $name=mono src=PATH/> (принаймні це потрібно зробити у Windows) файловий шлях до фолдера розміщення <$macrocall $name=mono src=mapillary_tools/>. ">>
+
+!! ПРИКЛАДИ РОБОТИ ІЗ ЗОБРАЖЕННЯМИ
+
+Запозичено [[звідси|https://help.openstreetmap.org/questions/56215/how-to-adjust-compass-angle-exif-tag-on-photos-to-follow-a-gpx-track]].
+
+!!! Обробка зображень
+
+У разі відсутності або низької точності компасу можна скористатись розрахунковими значеннями напряму руху на базі інтерполяції напряму руху по координатах суміжних точок в послідовності знімків. Для додавання GPS інформації до EXIF-тегів ​​ваших знімків виконайте таку команду:
+
+```
+> mapillary_tools process --verbose --advanced --rerun --user_name mapillary_user --interpolate_directions --overwrite_EXIF_gps_tag --overwrite_EXIF_direction_tag --duplicate_angle 360 --offset_time 1 --import_path "~/media/cam/" --geotag_source "gpx" --geotag_source_path "~/gpx/today.gpx"
+```
+
+Тут незайвими будуть деякі пояснення:
+
+* Замініть <<mono mapillary_user>> своїм ім’ям користувача, з яким ви зареєструвались у Mapillary;
+* Замініть <<mono ~/media/cam/>> та <<mono ~/gpx/today.gpx>> фолдером своїх знімків та і шляхом до свого GPX-файлу;
+* <<mono --interpolate_directions>> повідомляє йому інтерполювати напрямок фотографії на основі треку GPX;
+* <<mono "--duplicate_angle 360">> підказує ігнорувати кут під час пошуку дублікатів, usefule, оскільки без підтримки GPS ваша камера не встановить значущий кут;
+* <<mono "--offset_time 1">> визначає зміщення, яке потрібно додати до часових позначок GPX для синхронізації з часовою міткою фотографії з годинника камери
+
+Щоб побачити всі параметри та їхній опис запустіть 
+
+```
+> mapillary_tools process --advanced -h
+```
+
+!!! Завантаження
+
+Щоб завантажити знімки, виконайте таку команду:
+
+```
+> mapillary_tools upload --verbose --advanced --skip_subfolders --number_threads 10 --max_attempts 10 --import_path "~/media/cam/"
+```
