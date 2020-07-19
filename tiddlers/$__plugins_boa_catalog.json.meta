@@ -1,0 +1,9 @@
+author: oleghbond
+core-version: 5.1.22
+dependents: Shiraz checklist
+description: BOA - Catalog of selected and sorted tiddlers
+list: readme
+plugin-type: plugin
+title: $:/plugins/boa/catalog
+type: application/json
+version: 0.0.1
