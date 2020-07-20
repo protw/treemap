@@ -1,6 +1,6 @@
 author: oleghbond
 core-version: 5.1.22
-dependents: Shiraz checklist
+dependents: Shiraz Utility checklist
 description: BOA - Catalog of selected and sorted tiddlers
 list: readme
 plugin-type: plugin
