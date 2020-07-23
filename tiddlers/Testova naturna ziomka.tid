@@ -1,13 +1,13 @@
 created: 20200723203429231
-modified: 20200723223512669
-tags: 
+modified: 20200723223859848
+tags: project tool
 title: Тестова натурна зйомка
 
 Тестова панорамна зйомка була проведена 23.7.2020 на території НАУ, Київ. 
 
 <center><iframe width="640px" height="480px" src="https://poly.google.com/view/euLi25NSOpb/embed?chrome=min" frameborder="0" style="border:none;" allowvr="yes" allow="vr; xr; accelerometer; magnetometer; gyroscope; autoplay;" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" onmousewheel="" ></iframe></center>
 
-На карті нижче представлені послідовність окремих точок зйомки і траєкторія руху. Координати точок панорамної зйомки отримані з допомогою вбудованого GNSS камери //GoPro MAX//. Траєкторія руху прокладалась вручну з допомогою //Google Earth// по топооснові супутникових знімків.
+На карті нижче представлені послідовність окремих точок зйомки (всього 53 знімки) і траєкторія руху. Координати точок панорамної зйомки отримані з допомогою вбудованого GNSS камери //GoPro MAX//. Траєкторія руху прокладалась вручну з допомогою //Google Earth// по топооснові супутникових знімків.
 
 <center><iframe src="https://www.google.com/maps/d/embed?mid=19F5FzTfrJdwNnpz--_pFN1FkydRXvRio&hl=uk" width="640" height="480"></iframe></center>
 
