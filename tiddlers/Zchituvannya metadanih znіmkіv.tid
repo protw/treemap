@@ -1,0 +1,249 @@
+created: 20200731194136514
+modified: 20200801171250757
+tags: soft
+title: Зчитування метаданих знімків
+
+Для початку запустимо інтерпретатор командного рядка (у Windows це <<mono cmd>>) і перейдемо у необхідний субфолдер послідовності знімків, як-то:
+
+```
+  > D:
+  > cd \boa_360\200731-тест-гімбал-пішки-НАУ
+```
+
+Скористаємось найпростішою командою <<mono mapillary_tools>>:
+
+```
+  > mapillary_tools process --import_path "." --user_name "oleghbond"
+```
+
+В результаті виконання цієї команди у субфолдері послідовності утворився субфолдер <<mono .mapillary\logs\>>, в якому розміщені файли з метаданими знімків у такій структурі:
+
+```
+  .mapillary
+    logs
+      <image_name_no_ext>
+        geotag_process.json
+        geotag_process_success
+        geotag_process_success_2020_07_31_11_22_35
+        import_meta_data_process.json
+        import_meta_data_process_success
+        import_meta_data_process_success_2020_07_31_11_22_34
+        manual_upload
+        mapillary_image_description.json
+        mapillary_image_description_success
+        mapillary_image_description_success_2020_07_31_11_22_40
+        sequence_process.json
+        sequence_process_success
+        sequence_process_success_2020_07_31_11_22_37
+        settings_upload_hash.json
+        upload_params_process.json
+        upload_params_process_success
+        upload_params_process_success_2020_07_31_11_22_38
+        user_process.json
+        user_process_success
+        user_process_success_2020_07_31_11_22_32
+```
+
+Тут <<mono "<image_name_no_ext>">> це субфолдер названий іменем знімка, але без розширення включно з точкою. Тобто, якщо знімок має ім'я <<mono GSAE0715.JPG>>, то субфодер з його метаданими - <<mono .mapillary\logs\GSAE0715\>>.
+
+Фактично субфолдер метаданих знімку містить 7 //JSON//-файлів:
+
+```
+  geotag_process.json
+  import_meta_data_process.json
+  mapillary_image_description.json
+  sequence_process.json
+  settings_upload_hash.json
+  upload_params_process.json
+  user_process.json
+```
+
+Інші файли, що містять в назві слово <<success>>, мають нульовий розмір і, тому, грають роль ознаки успішності пеевної операції та часу її виконання. Так, у випадку відсутності гео-міток у знімку, файл <<mono geotag_process.json>> відсутній, а замість пари файлів 
+
+```
+  geotag_process_success
+  geotag_process_success_2020_07_31_11_22_35
+```
+ з'являється пара з іншими мнемонічно зрозумілими назвами:
+
+```
+  geotag_process_failed
+  geotag_process_failed_2020_07_31_11_22_35
+```
+Метадані повторюються у різних //JSON//-файлах. Щоб не обтяжувати опис достатньо навести найбільший з них за розміром, що містить усі метадані, це <<mono mapillary_image_description.json>> виглядає так:
+
+```json
+{
+    "MAPDeviceMake": "GoPro", 
+    "MAPOrientation": 1, 
+    "MAPAltitude": 188.972, 
+    "MAPSettingsUserKey": "**********************", 
+    "MAPPhotoUUID": "ed213c98-b212-4c28-8854-cf36ef8cd19f", 
+    "MAPDeviceModel": "GoPro Max", 
+    "MAPCompassHeading": {
+        "TrueHeading": 0.0, 
+        "MagneticHeading": 0.0
+    }, 
+    "MAPMetaTags": {
+        "strings": [
+            {
+                "key": "mapillary_tools_version", 
+                "value": "0.5.0"
+            }
+        ]
+    }, 
+    "MAPSettingsUsername": "oleghbond", 
+    "MAPCaptureTime": "2020_07_31_09_13_44_000", 
+    "MAPLatitude": 50.439091899999994, 
+    "MAPSequenceUUID": "35647d9a-12d1-4c4b-aff8-7a6ef93d67ed", 
+    "MAPLongitude": 30.429179
+}
+```
+
+!! Автоматизація процедури зчитування метаданих
+
+Для автоматизації зчитування і консолідації метаданих знімків підготовлена процедура <<mono maplry_seq_meta>>, що написана на //Octave//. Процедура обробляє список фолдерів, що містять послідовності гео-міток 360 панорамних знімків, що мають розширення //.JPG//. Процедура створює чотири файли у кожному фолдері <<mono "<pano_subfolder>\.mapillary\">>, що містять:
+
+* <<mono .meta_coord.json>> - координати та час усіх точок знімків у послідовності;
+* <<mono .meta_coord.csv>> - те саме, що вище у форматі CSV;
+* <<mono .meta_result.json>> - всі метадані всіх точок у послідовності;
+* <<mono .meta_stat.json>> - підсумок послідовності.
+
+Код процедури <<mono maplry_seq_meta>> розташований у окремому фолдері. Перед запуском процедури її треба відкрити в  //Octave// та задати конкретні значення змінних <<mono user_name>> і <<mono BASIC_FOLDER>>.
+
+!! Код процедури
+
+```matlab
+function maplry_seq_meta
+  # MAPLRY_SEQ_META processes list of subfolders containing sequences
+  # of geo-tagged 360 panorama images (having the extension '.JPG'). 
+  # It creates four files in each subfolder '<pano_subfolder>\.mapillary\':
+  #   '.meta_coord.json'  -- coordinates and time of all the points 
+  #                          in the sequence;
+  #   '.meta_coord.csv'   -- the same as above in CSV format;
+  #   '.meta_result.json' -- all the metadata of all the points 
+  #                          in the sequence;
+  #   '.meta_stat.json'   -- summary of the sequence;
+  # Script MAPLRY_SEQ_META is located in a special supplementary 
+  # subfolder (_TOOLS\). In order to run the script, one needs first 
+  # to go to this supplementary subfolder. 
+  #
+  # Author: https://protw.github.io/oleghbond
+  # Date: 01.08.2020
+  # Detailed description: https://protw.github.io/treemap 
+
+  user_name = 'oleghbond';
+  BASIC_FOLDER = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+  
+  seq_folders = dir(BASIC_FOLDER);
+  seq_folders = seq_folders([seq_folders.isdir]);
+  seq_folders = {seq_folders.name};
+  seq_folders = select_by_mask(seq_folders, '^\d{6}\-[^\s]+$');
+  
+  printf('PROCEDURE: MAPLRY_SEQ_META\n');
+  printf('BASIC FOLDER: %s\n', BASIC_FOLDER);
+  for i = 1:length(seq_folders)
+    seq = seq_paths(seq_folders{i}, BASIC_FOLDER);
+    printf('%d) %s\n', i, seq.seq_name)
+    if !exist(seq.maplry_folder, 'file')
+      printf('  fetching meta data ...')
+      # seq.seq_folder(1:end-1) - '\' at the end should be removed
+      cmd_line = ['mapillary_tools process --import_path "' ...
+        seq.seq_folder(1:end-1) '" --user_name "' user_name '"'];
+      [status, output] = system(cmd_line);
+      printf(' (%d) done!\n', status)
+    endif
+    if !exist(seq.meta_result, 'file')
+      printf('%d) [geo-tags (-)] [%s]\n', i, seq.seq_name);
+      maplry_geo_seq_meta(seq);
+      printf('%d) ',i)
+      print_stat(seq)
+    else
+      printf('%d) ',i)
+      print_stat(seq)
+    endif
+  endfor
+endfunction
+
+function print_stat(seq)
+  seq_stat = loadjson(seq.meta_stat);
+  flds = fieldnames(seq_stat);
+  seq_stat = seq_stat.(flds{1});
+  printf('[geo-tags (%d/%d)] [%s]\n', seq_stat.img_geo_tagged_num, ...
+    seq_stat.img_num, seq.seq_name)
+endfunction
+
+function seq = seq_paths(seq_name, basic_folder)
+  seq.seq_name = seq_name;
+  seq.basic_folder = basic_folder;
+  seq.seq_folder = [basic_folder seq.seq_name '\'];
+  seq.img_ext = '\.jpg'; # '\.' is for use in REGEXP
+  seq.maplry_subfolder = '.mapillary\';
+  seq.maplry_folder = [seq.seq_folder seq.maplry_subfolder];
+  seq.log_subfolder = [seq.maplry_subfolder 'logs\'];
+  seq.log_folder = [seq.seq_folder seq.log_subfolder];
+  seq.meta_result = [seq.maplry_folder '.meta_result.json'];
+  seq.meta_coord = [seq.maplry_folder '.meta_coord.json'];
+  seq.meta_coord_csv = [seq.maplry_folder '.meta_coord.csv'];
+  seq.meta_stat = [seq.maplry_folder '.meta_stat.json'];
+  seq.img_descr_file = 'mapillary_image_description.json';
+endfunction
+
+function maplry_geo_seq_meta(seq)
+  img_list = make_img_list(seq);
+  stat.img_num = length(img_list);
+  for s = img_list(:)'
+    s1 = s{1};
+    metadata_folder = [seq.log_folder s1 '\'];
+    img_descr = [metadata_folder seq.img_descr_file];
+    if exist(img_descr)
+      dat.(s1) = loadjson(img_descr);
+    endif
+  endfor
+  if !exist('dat', 'var')
+    stat.img_geo_tagged_num = 0;
+    savejson(seq.seq_name,stat,'FileName',seq.meta_stat);
+    return;
+  endif
+  
+  savejson(seq.seq_name,dat,'FileName',seq.meta_result);
+
+  stat.img_geo_tagged_num = numfields(dat);
+  savejson(seq.seq_name,stat,'FileName',seq.meta_stat);
+  
+  fh = fopen(seq.meta_coord_csv,'w');
+  fprintf(fh,'Img,Lat,Long,Alt,Time\n');
+  for [val,key] = dat
+    coord.(key).lat = dat.(key).MAPLatitude;
+    coord.(key).long = dat.(key).MAPLongitude;
+    coord.(key).alt = dat.(key).MAPAltitude;
+    coord.(key).time = dat.(key).MAPCaptureTime;
+    fprintf(fh,'%s,%.10f,%.10f,%.3f,%s\n',key,coord.(key).lat,...
+      coord.(key).long,coord.(key).alt,coord.(key).time);
+  endfor
+  fclose(fh);
+  savejson(seq.seq_name,coord,'FileName',seq.meta_coord);
+endfunction
+
+function img_list = make_img_list(seq)
+  # Making the list of image names in the sequence
+  img_list = readdir(seq.seq_folder);
+  img_list = select_by_mask(img_list, seq.img_ext);
+  # remove extension from the file name
+  for i = 1:length(img_list)
+    s = strsplit(img_list{i},'.');
+    img_list{i} = s{1};
+  endfor
+endfunction
+
+function sel_list = select_by_mask(cell_list, reg_mask)
+  idx = regexpi(cell_list, reg_mask);
+  idx_sel = ones(size(cell_list));
+  for i = 1:length(idx)
+    if isempty(idx{i})
+      idx_sel(i) = 0;
+    endif
+  endfor
+  sel_list = cell_list(logical(idx_sel));
+endfunction
+```
