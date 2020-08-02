@@ -1,5 +1,5 @@
 created: 20200802124635955
-modified: 20200802134437325
+modified: 20200802200629401
 tags: soft
 title: Вступ до snap2road
 
@@ -20,30 +20,51 @@ title: Вступ до snap2road
 !! КОД
 
 ```matlab
-function maplry_snap2road
+function [coord, dst, pos] = maplry_snap2road(pnt, poly, title_str)
+  # Usage:
+  #   [coord, dst, pos] = maplry_snap2road(pnt, poly, title_str);
+  # where
+  #   pnt - scattered points, Nx2 matrix, [x, y]
+  #   poly - polyline knodes, Mx2 matrix, [x, y]
+  #   title_str - name of sequence, string_fill_char
+  #   coord - points snapped to polyline, Nx2 matrix, [x, y]
+  #   dst - distance from point to polyline, Nx1 vector
+  #   pos - postion of nearest point at polyline (0 < pos < N-1)
+  # If pos(i) == 0 || pos(i) == N-1 than i-th point does not have 
+  # projection on polyline.
   # For using the function 'projPointOnPolyline' 
   # the package 'matgeom' is utilized.
   
   # Input data
-  pnt = [15 4; 19 18; 8 7; 11 19];
-  poly = [10 5; 20 10; 18 20; 10 15];
+  if !exist('pnt','var') || !exist('poly','var')
+    # test data set
+    pnt = [15 4; 19 18; 8 7; 11 19; 8 17];
+    poly = [10 5; 20 10; 18 20; 10 15];
+    title_str = 'Snap to Road Demo';
+  endif
   margin = 0.15;
   
   # Calculation
-  pos = projPointOnPolyline(pnt, poly);
+  [pos, dst] = projPointOnPolyline(pnt, poly);
   coord = interp1(1:size(poly,1),poly,pos+1);
   
   # Presenting the result
-  axis_lim = def_axis_lim(pnt, poly, margin);
-  plot(poly(:,1),poly(:,2),'-o',...
-       pnt(:,1),pnt(:,2),'s',...
-       coord(:,1),coord(:,2),'x',
-       [pnt(:,1) coord(:,1)]',[pnt(:,2) coord(:,2)]')
-  xlabel('X')
-  ylabel('Y')
-  axis(axis_lim)
-  axis equal
-  legend('polyline','points','nearest points','connection')
+  if exist('title_str', 'var')
+    axis_lim = def_axis_lim(pnt, poly, margin);
+    plot(poly(:,1),poly(:,2),'-o',...
+         pnt(:,1),pnt(:,2),'s',...
+         coord(:,1),coord(:,2),'x',
+         [pnt(:,1) coord(:,1)]',[pnt(:,2) coord(:,2)]')
+    xlabel('X, m')
+    ylabel('Y, m')
+    title(title_str)
+    axis(axis_lim)
+    axis equal
+    grid on
+    legend({'polyline','points','nearest points','connection'},...
+        'location', 'east')
+    legend boxoff
+  endif
 endfunction
 
 function axis_lim = def_axis_lim(pnt, poly, margin)
@@ -65,4 +86,4 @@ endfunction
 
 !! НАСТУПНИЙ КРОК
 
-Завершальним кроком розробки цієї задачі є пристосування її до обрахунку географічних координат. Справа в тім, що географічні координати надаються в градусах і метрична "вартість" градуса по широті і довготі не однакова, ба більше, метрична "вартість" градуса довготи змінна і залежить від широти.
+Наступним кроком розробки цієї задачі, що представлений у [[Snap2road на місцевості]], є пристосування до обрахунку географічних координат. Справа в тім, що географічні координати надаються в градусах і метрична "вартість" градуса по широті і довготі не однакова, ба більше, метрична "вартість" градуса довготи змінна і залежить від широти.

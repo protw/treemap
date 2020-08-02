@@ -1,0 +1,117 @@
+created: 20200802192159362
+modified: 20200802213550948
+tags: soft
+title: Snap2road на місцевості
+
+У попередній статті [[Вступ до snap2road]] продемонстрована процедура прив'язки розсіяних точок до прокладеного маршруту. Тут ми розвинемо цю процедуру, пристосувавши її від метричних одиниць до географічних координат у градусах.
+
+Для цього були проведені польові вимірювання на території НАУ:
+
+<center><iframe src="https://www.google.com/maps/d/embed?mid=1Bhn1M13A83_SNCvCI-jClC9FpOHetjim&hl=uk" width="640" height="480"></iframe></center>
+
+На карті у вигляді точок (маркерів) представлені результати вимірювань, а також суцільною лінією прокладений маршрут. Координати точок отримані методом, що описаний у [[Зчитування метаданих знімків]] і збережені у файлі зі стандартним іменем <<mono .meta_coord.csv>>. У свою чергу маршрут прокладений у //Google Earth// з допомогою функції //Додати шлях//, після чого збережений у файл зі стандартним іменем <<mono .trajectory-path.kml>>. Обидва файли збережені у субфолдері зі стандартним іменем <<mono .mapillary>>, що розташований фолдері послідовності відповідно до правил [[Зберігання послідовностей знімків]].
+
+Таким чином, процедура прив'язки географічних координат послідовності знімків до треку <<mono maplry_snap2road_geo.m>> складається з таких кроків:
+
+# Завантаження треку з файлу <<mono .trajectory-path.kml>> з базового фолдера;
+# Завантаження точок послідовності знімків з файлу <<mono .meta_coord.json>> з базового фолдера;
+# Запуск процедури прив'язки до треку <<mono maplry_snap2road.m>>;
+# Збереження картинки <<mono .snap2road.svg>>, де "старі" і зкориговані точки послідовності накладені на трек;
+# Повертає зкориговані точки <<mono pntx_d>> у вигляді матриці Nx2 (Latitude, Longitude)
+
+!! КОД
+
+```matlab
+function pntx_d = maplry_snap2road_geo(seq_name, basic_folder)
+  # Snaps points to track.
+  # Loads track from '.trajectory-path.kml' in 'basic_folder'.
+  # Loads points from '.meta_coord.json' in 'basic_folder'.
+  # Runs 'maplry_snap2road'.
+  # Saves picture of old and new points superimposed on track.
+  # Returns new points 'pntx_d' as matrix Nx2 (Latitude, Longitude)
+  
+  if !exist('seq_name','var') || !exist('basic_folder','var')
+    # test parameters
+    seq_name = '200731-тест-гімбал-пішки-НАУ';
+    basic_folder = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+  endif
+  maplry_subfolder = '\.mapillary\';
+  traj_file = '.trajectory-path.kml';
+  pnt_file = '.meta_coord.json';
+  svg_file = '.snap2road.svg';
+  svg_file = [basic_folder seq_name maplry_subfolder svg_file];
+  
+  # structure 'traj' contains fields with arrays: 'Lat', 'Lon', 'Ele'
+  traj_file = [basic_folder seq_name maplry_subfolder traj_file];
+  traj = kmlread(traj_file);
+  
+  # structure 'pnts' contains fields with arrays: 'lat', 'lon', 'alt'
+  pnt_file = [basic_folder seq_name maplry_subfolder pnt_file];
+  pnts = jsonread(pnt_file);
+
+  # defining polyline and points as Nx2 matrix [x, y] in degrees
+  poly_d = [traj.Lon traj.Lat];
+  pnt_d = [pnts.long pnts.lat];
+  
+  # defining angular metrics 'dx_md' & 'dy_md' in m/deg
+  coord_d_min = min([poly_d; pnt_d]);
+  ddeg = 0.1;
+  [dx_d, azx_d] = distance(coord_d_min(2), coord_d_min(1), ...
+      coord_d_min(2), coord_d_min(1)+ddeg, 'degrees');
+  [dy_d, azy_d] = distance(coord_d_min(2), coord_d_min(1), ...
+      coord_d_min(2)+ddeg, coord_d_min(1), 'degrees');
+  dx_md = dx_d * earthRadius('m') / ddeg;
+  dy_md = dy_d * earthRadius('m') / ddeg;
+  
+  # converting coordinates to meters relatively 'coord_d_min'
+  poly_m = (poly_d - ones(size(poly_d,1),1) * coord_d_min) ...
+      .* (ones(size(poly_d,1),1) * [dx_md dy_md]) * pi / 180;
+  pnt_m = (pnt_d - ones(size(pnt_d,1),1)*coord_d_min) ...
+      .* (ones(size(pnt_d,1),1) * [dx_md dy_md]) * pi / 180;
+  
+  # Snap to road
+  [pntx_m, dst_m] = maplry_snap2road(pnt_m, poly_m, seq_name);
+  print(svg_file,'-dsvg','-FArial','-S1200')
+
+  # converting coordinates from metric to geographical
+  pntx_d = pntx_m ./ ...
+      ((ones(size(pnt_d,1),1) * [dx_md dy_md]) * pi / 180) + ...
+      ones(size(pnt_d,1),1)*coord_d_min;
+  pntx_d = fliplr(pntx_d); # makes Latitude first, Longitude second
+#{  
+  # check result
+  dpnt_d = distance(fliplr(pnt_d),pntx_d,'degrees');
+  dst2_m = dpnt_d * pi / 180 * earthRadius('m');
+  # compare 'dst_m' and 'dst2_m'
+#}
+  1;
+endfunction
+
+function pnts = jsonread(pnt_file)
+  pnt = loadjson(pnt_file);
+  
+  flds = fieldnames(pnt);
+  pnt = pnt.(flds{1});
+  flds = fieldnames(pnt);
+  pnt_flds = fieldnames(pnt.(flds{1}));
+  pnts = struct();
+  for j = 1:length(pnt_flds)
+    pnts = setfield(pnts,pnt_flds{j},[]);
+  endfor
+  for i = 1:length(flds)
+    single_pnt = pnt.(flds{i});
+    for j = 1:length(pnt_flds)
+      pnts.(pnt_flds{j}) = [pnts.(pnt_flds{j}); single_pnt.(pnt_flds{j})];
+    endfor
+  endfor
+endfunction
+```
+!! ЯК ВИГЛЯДАЄ РЕЗУЛЬТАТ
+
+<<image-basic img/16-snap2road-200731.svg width:"85%" align:center caption:"Рисунок 16. Початкові та зкориговані методом Snap to Road точки послідовності накладені на прокладений трек.">>
+
+В результаті проведення процедури точки послідовності знімків змістились на трек таким чином, що 95% величини цього зміщення опинилось в межах 4 м.
+
+!! ЩО ЗАЛИШИЛОСЬ
+
+Завершальним кроком цієї процедури стане збереження отриманих даних в окремому файлі спеціалізованого //GPX//-формату, що розуміє Mapillary.
