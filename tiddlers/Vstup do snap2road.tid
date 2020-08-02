@@ -1,0 +1,68 @@
+created: 20200802124635955
+modified: 20200802134437325
+tags: soft
+title: Вступ до snap2road
+
+Метод прив'язки координат окремих точок до маршруту, так званий <<mono "Snap to Road">>, потрібен для зменшення траверсальної (перепендикулярної до треку) складової похибки //GNSS// обладнання. Запровадження метода включено до плану робіт за проєктом і обговорювалось у [[Перспективний план розробки]] і [[Подорожня мапа проєкту]].
+
+Для наочності у цьому розділі продемонстрована найпростіша реалізація цього метода.
+
+; Вхідні дані
+* ламана лінія <<mono "poly = [10 5; 20 10; 18 20; 10 15];">>, де кожна пара чисел представляє //(x, y)//-координати вузлів цієї лінії;
+* точки <<mono "pnt = [15 4; 19 18; 8 7; 11 19];">> з неточними координатами, отриманими вздовж цієї ламаної лінії з //(x, y)//-координатами.
+; Використовувані методи
+* <<mono projPointOnPolyline>> - метод обрахунку найближчих точок на ламаній лінії, з пакету //matgeom// системи виконання математичних розрахунків //GNU Octave//;
+* <<mono interp1>> - метод інтерполяції системи //GNU Octave//;
+* <<mono maplry_snap2road>> - приклад реалізації <<mono "Snap to Road">> прив'язки координат точок <<mono pnt>> до маршруту <<mono poly>>. 
+; Результат
+* Метод <<mono maplry_snap2road>> обраховує масив точок <<mono coord>>, що належать ламаній лінії та є найближчими до точок <<mono pnt>>.
+
+!! КОД
+
+```matlab
+function maplry_snap2road
+  # For using the function 'projPointOnPolyline' 
+  # the package 'matgeom' is utilized.
+  
+  # Input data
+  pnt = [15 4; 19 18; 8 7; 11 19];
+  poly = [10 5; 20 10; 18 20; 10 15];
+  margin = 0.15;
+  
+  # Calculation
+  pos = projPointOnPolyline(pnt, poly);
+  coord = interp1(1:size(poly,1),poly,pos+1);
+  
+  # Presenting the result
+  axis_lim = def_axis_lim(pnt, poly, margin);
+  plot(poly(:,1),poly(:,2),'-o',...
+       pnt(:,1),pnt(:,2),'s',...
+       coord(:,1),coord(:,2),'x',
+       [pnt(:,1) coord(:,1)]',[pnt(:,2) coord(:,2)]')
+  xlabel('X')
+  ylabel('Y')
+  axis(axis_lim)
+  axis equal
+  legend('polyline','points','nearest points','connection')
+endfunction
+
+function axis_lim = def_axis_lim(pnt, poly, margin)
+  # define axis limits
+  poly_max = max([pnt; poly]);
+  poly_min = min([pnt; poly]);
+  poly_range = poly_max - poly_min;
+  axis_lim = [
+    poly_min - margin*poly_range; 
+    poly_max + margin*poly_range
+  ];
+  axis_lim = axis_lim(:)';
+endfunction
+```
+
+!! ГРАФІЧНЕ ВІДОБРАЖЕННЯ РЕЗУЛЬТАТУ
+
+<<image-basic img/15-maplry_snap2road.svg width:100% align:center caption:"Рисунок 15. Результат обрахунку найближчих точок ''coord'', що належать ламаній лінії ''poly'', до точок ''pnt''.">>
+
+!! НАСТУПНИЙ КРОК
+
+Завершальним кроком розробки цієї задачі є пристосування її до обрахунку географічних координат. Справа в тім, що географічні координати надаються в градусах і метрична "вартість" градуса по широті і довготі не однакова, ба більше, метрична "вартість" градуса довготи змінна і залежить від широти.
