@@ -1,5 +1,5 @@
 created: 20200805124607210
-modified: 20200805130438114
+modified: 20200805183307845
 tags: soft
 title: Генерування GPX-файлу
 
@@ -50,10 +50,6 @@ function templ = gpx_template
 	templ.trk_flds = {'save_gpx_time', 'basic_folder', ...
       'basic_folder_descr', 'user_name', 'seq_name'};
 
-	templ.pnt_flds = {'pnt_lat', 'pnt_lon', 'pnt_time', ...
-      'pnt_alt', 'pnt_name'};
-
-  # save_gpx_time, basic_folder, basic_folder_descr, user_name, seq_name
 	templ.prefix = [
 		'<?xml version="1.0" encoding="UTF-8"?>\n' ...
 		'<gpx\n' ...
@@ -81,7 +77,9 @@ function templ = gpx_template
 		'</gpx>'
 	];
 
-  # pnt_*: pnt_lat, pnt_lon, pnt_time, pnt_alt
+	templ.pnt_flds = {'pnt_lat', 'pnt_lon', 'pnt_time', ...
+      'pnt_alt', 'pnt_name'};
+
 	templ.pnt_record = [
 		'\t\t\t<trkpt lat="$pnt_lat$" lon="$pnt_lon$">\n' ...
 		'\t\t\t\t<time>$pnt_time$</time>\n' ...
