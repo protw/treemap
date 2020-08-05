@@ -1,5 +1,5 @@
 created: 20200731194136514
-modified: 20200801171250757
+modified: 20200805124020841
 tags: soft
 title: Зчитування метаданих знімків
 
@@ -104,10 +104,12 @@ title: Зчитування метаданих знімків
 
 Для автоматизації зчитування і консолідації метаданих знімків підготовлена процедура <<mono maplry_seq_meta>>, що написана на //Octave//. Процедура обробляє список фолдерів, що містять послідовності гео-міток 360 панорамних знімків, що мають розширення //.JPG//. Процедура створює чотири файли у кожному фолдері <<mono "<pano_subfolder>\.mapillary\">>, що містять:
 
-* <<mono .meta_coord.json>> - координати та час усіх точок знімків у послідовності;
-* <<mono .meta_coord.csv>> - те саме, що вище у форматі CSV;
-* <<mono .meta_result.json>> - всі метадані всіх точок у послідовності;
-* <<mono .meta_stat.json>> - підсумок послідовності.
+* <<mono .meta_coord.csv>> -- координати та час усіх точок знімків у послідовності;
+* <<mono .meta_coord.json>> -- те саме, що вище у форматі //JSON//;
+* <<mono .meta_result.json>> -- всі метадані всіх точок у послідовності;
+* <<mono .meta_stat.json>> -- підсумок послідовності.
+* <<mono .snap2road.gpx>> -- координати знімків послідовності, прив'язані до траєкторії;
+* <<mono .snap2road.svg>>    -- metric graph of coordinates snapped to trajectory
 
 Код процедури <<mono maplry_seq_meta>> розташований у окремому фолдері. Перед запуском процедури її треба відкрити в  //Octave// та задати конкретні значення змінних <<mono user_name>> і <<mono BASIC_FOLDER>>.
 
@@ -118,38 +120,47 @@ function maplry_seq_meta
   # MAPLRY_SEQ_META processes list of subfolders containing sequences
   # of geo-tagged 360 panorama images (having the extension '.JPG'). 
   # It creates four files in each subfolder '<pano_subfolder>\.mapillary\':
+  #   '.meta_coord.csv'   -- the same as above in CSV format;
   #   '.meta_coord.json'  -- coordinates and time of all the points 
   #                          in the sequence;
-  #   '.meta_coord.csv'   -- the same as above in CSV format;
   #   '.meta_result.json' -- all the metadata of all the points 
   #                          in the sequence;
-  #   '.meta_stat.json'   -- summary of the sequence;
+  #   '.meta_stat.json'   -- status and summary of the sequence;
+  #   '.snap2road.gpx'    -- coordinates snapped to trajectory;
+  #   '.snap2road.svg'    -- metric graph of coordinates snapped 
+  #                          to trajectory
   # Script MAPLRY_SEQ_META is located in a special supplementary 
   # subfolder (_TOOLS\). In order to run the script, one needs first 
   # to go to this supplementary subfolder. 
   #
   # Author: https://protw.github.io/oleghbond
-  # Date: 01.08.2020
+  # Version: 0.0.2
+  # Date: 05.08.2020
   # Detailed description: https://protw.github.io/treemap 
 
-  user_name = 'oleghbond';
-  BASIC_FOLDER = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+  seq.user_name = 'oleghbond';
+  seq.basic_folder = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+  # Ths description is to be written in GPX-file, defined by 
+  # variable 'seq.snapped_gpx' in subfunction 'seq_paths' below
+  seq.basic_folder_descr = 'Snapped to road coordinates';
   
-  seq_folders = dir(BASIC_FOLDER);
+  # all single backslashes substitute with double ones
+  seq.basic_folder = regexprep(seq.basic_folder,'(?<!\\)(\\)(?!\\)','\\\\');
+  seq_folders = dir(seq.basic_folder);
   seq_folders = seq_folders([seq_folders.isdir]);
   seq_folders = {seq_folders.name};
-  seq_folders = select_by_mask(seq_folders, '^\d{6}\-[^\s]+$');
+  seq_folders = select_by_mask(seq_folders, '^s\d{6}\_[^\s\-]+$');
   
   printf('PROCEDURE: MAPLRY_SEQ_META\n');
-  printf('BASIC FOLDER: %s\n', BASIC_FOLDER);
+  printf('BASIC FOLDER: %s\n', seq.basic_folder);
   for i = 1:length(seq_folders)
-    seq = seq_paths(seq_folders{i}, BASIC_FOLDER);
+    seq = seq_paths(seq_folders{i}, seq);
     printf('%d) %s\n', i, seq.seq_name)
-    if !exist(seq.maplry_folder, 'file')
+    if !exist([seq.seq_folder seq.log_subfolder],'dir')
       printf('  fetching meta data ...')
       # seq.seq_folder(1:end-1) - '\' at the end should be removed
       cmd_line = ['mapillary_tools process --import_path "' ...
-        seq.seq_folder(1:end-1) '" --user_name "' user_name '"'];
+        seq.seq_folder(1:end-1) '" --user_name "' seq.user_name '"'];
       [status, output] = system(cmd_line);
       printf(' (%d) done!\n', status)
     endif
@@ -173,10 +184,9 @@ function print_stat(seq)
     seq_stat.img_num, seq.seq_name)
 endfunction
 
-function seq = seq_paths(seq_name, basic_folder)
+function seq = seq_paths(seq_name, seq)
   seq.seq_name = seq_name;
-  seq.basic_folder = basic_folder;
-  seq.seq_folder = [basic_folder seq.seq_name '\'];
+  seq.seq_folder = [seq.basic_folder seq.seq_name '\'];
   seq.img_ext = '\.jpg'; # '\.' is for use in REGEXP
   seq.maplry_subfolder = '.mapillary\';
   seq.maplry_folder = [seq.seq_folder seq.maplry_subfolder];
@@ -186,6 +196,9 @@ function seq = seq_paths(seq_name, basic_folder)
   seq.meta_coord = [seq.maplry_folder '.meta_coord.json'];
   seq.meta_coord_csv = [seq.maplry_folder '.meta_coord.csv'];
   seq.meta_stat = [seq.maplry_folder '.meta_stat.json'];
+  seq.snapped_gpx = [seq.maplry_folder '.snap2road.gpx'];
+  seq.traj_file = [seq.maplry_folder '.trajectory-path.kml'];
+  seq.snapped_svg = [seq.maplry_folder '.snap2road.svg'];
   seq.img_descr_file = 'mapillary_image_description.json';
 endfunction
 
@@ -211,18 +224,16 @@ function maplry_geo_seq_meta(seq)
   stat.img_geo_tagged_num = numfields(dat);
   savejson(seq.seq_name,stat,'FileName',seq.meta_stat);
   
-  fh = fopen(seq.meta_coord_csv,'w');
-  fprintf(fh,'Img,Lat,Long,Alt,Time\n');
-  for [val,key] = dat
-    coord.(key).lat = dat.(key).MAPLatitude;
-    coord.(key).long = dat.(key).MAPLongitude;
-    coord.(key).alt = dat.(key).MAPAltitude;
-    coord.(key).time = dat.(key).MAPCaptureTime;
-    fprintf(fh,'%s,%.10f,%.10f,%.3f,%s\n',key,coord.(key).lat,...
-      coord.(key).long,coord.(key).alt,coord.(key).time);
-  endfor
-  fclose(fh);
+  coord = dat2coord(dat);
+  save_coord_csv(seq.meta_coord_csv, coord);
+
   savejson(seq.seq_name,coord,'FileName',seq.meta_coord);
+  
+  # Snap to road (track) and save
+  seq.save_gpx_time = datestr(now,'yyyy-mm-ddTHH:MM:SSZ');
+  pntx = maplry_snap2road_geo(seq);
+  maplry_save_gpx(seq,pntx);
+  1;
 endfunction
 
 function img_list = make_img_list(seq)
@@ -245,5 +256,27 @@ function sel_list = select_by_mask(cell_list, reg_mask)
     endif
   endfor
   sel_list = cell_list(logical(idx_sel));
+endfunction
+
+function coord = dat2coord(dat)
+  for [val,key] = dat
+    coord.(key).lat = val.MAPLatitude;
+    coord.(key).long = val.MAPLongitude;
+    coord.(key).alt = val.MAPAltitude;
+    # convert from '2020_07_31_09_10_24_000' to '2020-07-31T09:10:24Z'
+    t = strsplit(val.MAPCaptureTime,'_');
+    t = [strjoin(t(1:3),'-') 'T' strjoin(t(4:6),':') 'Z'];
+    coord.(key).time = t;
+  endfor
+endfunction
+
+function save_coord_csv(csv_file,coord)
+  fh = fopen(csv_file,'w');
+  fprintf(fh,'Img,Lat,Long,Alt,Time\n');
+  for [val,key] = coord
+    fprintf(fh,'%s,%.10f,%.10f,%.3f,%s\n',key,coord.(key).lat,...
+      coord.(key).long,coord.(key).alt,coord.(key).time);
+  endfor
+  fclose(fh);
 endfunction
 ```

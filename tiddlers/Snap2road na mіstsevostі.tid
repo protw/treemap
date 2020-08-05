@@ -1,5 +1,5 @@
 created: 20200802192159362
-modified: 20200803053253301
+modified: 20200805130745554
 tags: soft
 title: Snap2road на місцевості
 
@@ -28,7 +28,7 @@ title: Snap2road на місцевості
 !! КОД
 
 ```matlab
-function pntx_d = maplry_snap2road_geo(seq_name, basic_folder)
+function pntx = maplry_snap2road_geo(seq)
   # Snaps points to track.
   # Loads track from '.trajectory-path.kml' in 'basic_folder'.
   # Loads points from '.meta_coord.json' in 'basic_folder'.
@@ -36,28 +36,36 @@ function pntx_d = maplry_snap2road_geo(seq_name, basic_folder)
   # Saves picture of old and new points superimposed on track.
   # Returns new points 'pntx_d' as matrix Nx2 (Latitude, Longitude)
   
-  if !exist('seq_name','var') || !exist('basic_folder','var')
+  pkg load mapping;
+  
+  if !exist('seq','var')
     # test parameters
-    seq_name = '200731-тест-гімбал-пішки-НАУ';
-    basic_folder = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+    seq.seq_name = 's200731_test_gimbal_by_foot_NAU';
+    seq.basic_folder = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
+    seq.maplry_subfolder = '\.mapillary\';
+    seq.traj_file = '.trajectory-path.kml';
+    seq.meta_coord = '.meta_coord.json';
+    seq.snapped_svg = '.snap2road.svg';
+    seq.snapped_svg = [seq.basic_folder seq.seq_name ...
+        seq.maplry_subfolder seq.snapped_svg];
+    seq.traj_file = [seq.basic_folder seq.seq_name ...
+        seq.maplry_subfolder seq.traj_file];
+    seq.meta_coord = [seq.basic_folder seq.seq_name ...
+        seq.maplry_subfolder seq.meta_coord];
   endif
-  maplry_subfolder = '\.mapillary\';
-  traj_file = '.trajectory-path.kml';
-  pnt_file = '.meta_coord.json';
-  svg_file = '.snap2road.svg';
-  svg_file = [basic_folder seq_name maplry_subfolder svg_file];
   
   # structure 'traj' contains fields with arrays: 'Lat', 'Lon', 'Ele'
-  traj_file = [basic_folder seq_name maplry_subfolder traj_file];
-  traj = kmlread(traj_file);
+  traj = kmlread(seq.traj_file);
   
-  # structure 'pnts' contains fields with arrays: 'lat', 'lon', 'alt'
-  pnt_file = [basic_folder seq_name maplry_subfolder pnt_file];
-  pnts = jsonread(pnt_file);
+  # structure 'coord' contains fields with arrays: 'lat', 'lon', 'alt'
+  pnt = loadjson(seq.meta_coord);
+  flds = fieldnames(pnt);
+  pnt = pnt.(flds{1});
+  coord = arrofstruct2structofarr(pnt);
 
   # defining polyline and points as Nx2 matrix [x, y] in degrees
   poly_d = [traj.Lon traj.Lat];
-  pnt_d = [pnts.long pnts.lat];
+  pnt_d = [coord.long coord.lat];
   
   # defining angular metrics 'dx_md' & 'dy_md' in m/deg
   coord_d_min = min([poly_d; pnt_d]);
@@ -76,42 +84,45 @@ function pntx_d = maplry_snap2road_geo(seq_name, basic_folder)
       .* (ones(size(pnt_d,1),1) * [dx_md dy_md]) * pi / 180;
   
   # Snap to road
-  [pntx_m, dst_m] = maplry_snap2road(pnt_m, poly_m, seq_name);
-  print(svg_file,'-dsvg','-FArial','-S1200')
+  [pntx_m, dst_m] = maplry_snap2road(pnt_m, poly_m, seq.seq_name);
+  print(seq.snapped_svg,'-dsvg','-FArial','-S800')
 
   # converting coordinates from metric to geographical
   pntx_d = pntx_m ./ ...
       ((ones(size(pnt_d,1),1) * [dx_md dy_md]) * pi / 180) + ...
       ones(size(pnt_d,1),1)*coord_d_min;
-  pntx_d = fliplr(pntx_d); # makes Latitude first, Longitude second
+  #pntx_d = fliplr(pntx_d); # makes Latitude first, Longitude second
+  pntx = pnt;
+  pntx_list = fieldnames(pntx);
+  for i = 1:length(pntx_list)
+    pntx.(pntx_list{i}).lat = pntx_d(i,2);
+    pntx.(pntx_list{i}).long = pntx_d(i,1); 
+  endfor
+  
 #{  
   # check result
-  dpnt_d = distance(fliplr(pnt_d),pntx_d,'degrees');
+  dpnt_d = distance(fliplr(pnt_d),fliplr(pntx_d),'degrees');
   dst2_m = dpnt_d * pi / 180 * earthRadius('m');
   # compare 'dst_m' and 'dst2_m'
 #}
   1;
 endfunction
 
-function pnts = jsonread(pnt_file)
-  pnt = loadjson(pnt_file);
-  
-  flds = fieldnames(pnt);
-  pnt = pnt.(flds{1});
+function coord = arrofstruct2structofarr(pnt)
   flds = fieldnames(pnt);
   pnt_flds = fieldnames(pnt.(flds{1}));
-  pnts = struct();
+  coord = struct();
   for j = 1:length(pnt_flds)
-    pnts = setfield(pnts,pnt_flds{j},[]);
+    coord = setfield(coord,pnt_flds{j},[]);
   endfor
   for i = 1:length(flds)
     single_pnt = pnt.(flds{i});
     for j = 1:length(pnt_flds)
-      pnts.(pnt_flds{j}) = [pnts.(pnt_flds{j}); single_pnt.(pnt_flds{j})];
+      coord.(pnt_flds{j}) = [coord.(pnt_flds{j}); single_pnt.(pnt_flds{j})];
     endfor
   endfor
 endfunction
 ```
 !! ЩО ЗАЛИШИЛОСЬ
 
-Завершальним кроком цієї процедури стане збереження отриманих даних в окремому файлі спеціалізованого //GPX//-формату, що розуміє Mapillary.
+Завершальним кроком цієї процедури прив'язки до траєкторії стане збереження отриманих даних в окремому файлі спеціалізованого //GPX//-формату, саме який і розуміє Mapillary. Див. [[Генерування GPX-файлу]].

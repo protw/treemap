@@ -1,0 +1,93 @@
+created: 20200805124607210
+modified: 20200805130438114
+tags: soft
+title: Генерування GPX-файлу
+
+//GPX// (GPS eXchange Format ) - це [[текстовий формат зберігання і обміну даними, що містять географічні координати|https://en.wikipedia.org/wiki/GPS_Exchange_Format]], заснований на XML. GPX є вільним форматом і може бути використаний без будь-яких ліцензійних обмежень.
+
+В Мережі можна знайти багато застосунків, складених на //Octave// / //Matlab//, що перетворюють тип даних //структура// у XML-відповідник. Огляд доступних (таких, що вдалося знайти) показали два серйозних обмеження цих застосунків:
+
+# Багато реалізацій спираються на глибинні бібліотеки, складені на //Java// - тобто ціна такого рішення втрата портабельності або автономності.
+# Не вдалося виявити підтримки типу даних //масив структур//. Але саме це характеризує структуру даних трека, в якому є масив точок, які, у свою чергу, теж є структурою.
+
+З огляду на зазначене був розроблений власний спрощений варіант конвертора масиву структур окремих точок у GPX-файл, код якого представлений нижче:
+
+```matlab
+function maplry_save_gpx(seq,coord)
+  templ = gpx_template;
+  
+  # substitute templates with current values for the whole sequence
+  # (track) in the file prefix
+  out = templ.prefix;
+  for fld = templ.trk_flds
+    out = strrep(out,['$' fld{1} '$'],seq.(fld{1}));
+  endfor
+  
+  # substitute templates with current values for all the point records
+  float_precision = 10;
+  for [val,key] = coord
+    rec = templ.pnt_record;
+
+    rec = strrep(rec, '$pnt_lat$', num2str(val.lat, float_precision));
+    rec = strrep(rec, '$pnt_lon$', num2str(val.long, float_precision));
+    rec = strrep(rec, '$pnt_alt$', num2str(val.alt, float_precision));
+    rec = strrep(rec, '$pnt_name$', key);
+    rec = strrep(rec, '$pnt_time$', val.time);
+
+    out = [out rec];
+  endfor
+
+  # append the file suffix
+  out = [out templ.suffix];
+  
+  # write down GPX-file
+  fh = fopen(seq.snapped_gpx,'w');
+  fprintf(fh, out);
+  fclose(fh);
+endfunction
+
+function templ = gpx_template
+	templ.trk_flds = {'save_gpx_time', 'basic_folder', ...
+      'basic_folder_descr', 'user_name', 'seq_name'};
+
+	templ.pnt_flds = {'pnt_lat', 'pnt_lon', 'pnt_time', ...
+      'pnt_alt', 'pnt_name'};
+
+  # save_gpx_time, basic_folder, basic_folder_descr, user_name, seq_name
+	templ.prefix = [
+		'<?xml version="1.0" encoding="UTF-8"?>\n' ...
+		'<gpx\n' ...
+		'xmlns="http://www.topografix.com/GPX/1/1"\n' ...
+		'version="1.1"\n' ...
+		'creator="TREEMAP"\n' ...
+		'xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"\n' ...
+		'xsi:schemaLocation="http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd">\n' ...
+		'\t<time>$save_gpx_time$</time>\n' ...
+		'\t<metadata>\n' ...
+		'\t\t<name>$basic_folder$</name>\n' ...
+		'\t\t<desc>$basic_folder_descr$</desc>\n' ...
+		'\t\t<author>\n' ...
+		'\t\t\t<name>$user_name$</name>\n' ...
+		'\t\t</author>\n' ...
+		'\t</metadata>\n' ...
+		'\t<trk>\n' ...
+		'\t\t<name>$seq_name$</name>\n' ...
+		'\t\t<trkseg>\n'
+	];
+
+	templ.suffix = [
+		'\t\t</trkseg>\n' ...
+		'\t</trk>\n' ...
+		'</gpx>'
+	];
+
+  # pnt_*: pnt_lat, pnt_lon, pnt_time, pnt_alt
+	templ.pnt_record = [
+		'\t\t\t<trkpt lat="$pnt_lat$" lon="$pnt_lon$">\n' ...
+		'\t\t\t\t<time>$pnt_time$</time>\n' ...
+		'\t\t\t\t<ele>$pnt_alt$</ele>\n' ...
+		'\t\t\t\t<name>$pnt_name$</name>\n' ...
+		'\t\t\t</trkpt>\n'
+	];
+endfunction
+```
