@@ -1,5 +1,5 @@
 created: 20200802192159362
-modified: 20200805130745554
+modified: 20200807073046078
 tags: soft
 title: Snap2road на місцевості
 
@@ -29,25 +29,34 @@ title: Snap2road на місцевості
 
 ```matlab
 function pntx = maplry_snap2road_geo(seq)
-  # Snaps points to track.
-  # Loads track from '.trajectory-path.kml' in 'basic_folder'.
-  # Loads points from '.meta_coord.json' in 'basic_folder'.
-  # Runs 'maplry_snap2road'.
-  # Saves picture of old and new points superimposed on track.
-  # Returns new points 'pntx_d' as matrix Nx2 (Latitude, Longitude)
-  
+  # MAPLRY_SNAP2ROAD_GEO snaps image coordinates to trajectory polyline.
+  # All coordinates are geographical.
+  # Procedure flow:
+  # 1) Loads points from JSON-file with name in 'seq.meta_coord'.
+  # 2) Loads trajectory from KML-file with name in 'seq.traj_file'.
+  # 3) Runs 'maplry_snap2road'.
+  # 4) Saves PNG-picture with name in 'seq.snapped_png' in which old and 
+  #    new points are superimposed together with trajectory.
+  # 5) Returns new points 'pntx' as array of structures as defined in 
+  #    subfunction 'dat2coord' in function 'maplry_seq_list_proc'.
+  #
+  # Author: https://protw.github.io/oleghbond
+  # Version: 0.0.1
+  # Date: 04.08.2020
+  # Detailed explanation: https://protw.github.io/treemap 
+
   pkg load mapping;
   
+  # For testing (when no input argument)
   if !exist('seq','var')
-    # test parameters
     seq.seq_name = 's200731_test_gimbal_by_foot_NAU';
     seq.basic_folder = 'D:\boa_nau\PROJECTS\190710 TREEMAP\_MAPILLARY\';
     seq.maplry_subfolder = '\.mapillary\';
     seq.traj_file = '.trajectory-path.kml';
     seq.meta_coord = '.meta_coord.json';
-    seq.snapped_svg = '.snap2road.svg';
-    seq.snapped_svg = [seq.basic_folder seq.seq_name ...
-        seq.maplry_subfolder seq.snapped_svg];
+    seq.snapped_png = '.snap2road.png';
+    seq.snapped_png = [seq.basic_folder seq.seq_name ...
+        seq.maplry_subfolder seq.snapped_png];
     seq.traj_file = [seq.basic_folder seq.seq_name ...
         seq.maplry_subfolder seq.traj_file];
     seq.meta_coord = [seq.basic_folder seq.seq_name ...
@@ -85,27 +94,21 @@ function pntx = maplry_snap2road_geo(seq)
   
   # Snap to road
   [pntx_m, dst_m] = maplry_snap2road(pnt_m, poly_m, seq.seq_name);
-  print(seq.snapped_svg,'-dsvg','-FArial','-S800')
+  # ?! print option '-dsvg' works for octave, but 
+  # does not work for octave-cli
+#  print(seq.snapped_png,'-dpng','-FArial','-S1200')
+  print(seq.snapped_png,'-dpdf','-FArial','-S1200')
 
   # converting coordinates from metric to geographical
   pntx_d = pntx_m ./ ...
       ((ones(size(pnt_d,1),1) * [dx_md dy_md]) * pi / 180) + ...
       ones(size(pnt_d,1),1)*coord_d_min;
-  #pntx_d = fliplr(pntx_d); # makes Latitude first, Longitude second
   pntx = pnt;
   pntx_list = fieldnames(pntx);
   for i = 1:length(pntx_list)
     pntx.(pntx_list{i}).lat = pntx_d(i,2);
     pntx.(pntx_list{i}).long = pntx_d(i,1); 
   endfor
-  
-#{  
-  # check result
-  dpnt_d = distance(fliplr(pnt_d),fliplr(pntx_d),'degrees');
-  dst2_m = dpnt_d * pi / 180 * earthRadius('m');
-  # compare 'dst_m' and 'dst2_m'
-#}
-  1;
 endfunction
 
 function coord = arrofstruct2structofarr(pnt)
