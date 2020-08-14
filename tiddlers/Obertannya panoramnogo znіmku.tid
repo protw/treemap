@@ -1,0 +1,266 @@
+created: 20200813181226513
+modified: 20200814061135711
+tags: soft
+title: Обертання панорамного знімку
+
+Чітке кутове позиціонування камери забезпечує коректність кутових вимірювань, що проводяться з допомогою панорамного знімку.
+
+Кутове позиціонування в контексті проєкту TREEMAP включає 2 речі:
+
+# паралельність площини екватора панорамного знімку і площини горизонту зйомки;
+# відомий азимут напрямку "погляду" камери.
+
+Першу умову ще називають вирівняним горизонтом, а саму процедуру вирівнюванням горизонту (//horizon leveling//). Дотримання цієї умови еквівалентно утриманню двох кутів камери - //roll// і //pitch// на рівні 0&deg;. Дотримання другої умови досягається, наприклад, наявністю вбудованого компасу, з допомогою якого визначається кут камери (//camera angle, heading, yaw, azimuth//).
+
+<<image-basic img/17-pano-sphere.png width:80% align:center caption:'Рисунок 17. Повне сферичне панорамне зображення "одягнуто" на одиничну сферу (//сферична проєкція//). Три ортогональних вісі, навколо яких може відбуватися обертання, позначені Y - yaw, R - roll, P - pitch. Напрям вісі R відповідає напряму "погляду" камери. Площина RP має бути паралельна площині горизонту.'>>
+
+Не дивлячись на те, що ці функції є практично стандартом сучасного мобільного телефону, для панорамних камер це не так. Зокрема, GoPro MAX має функцію вирівнювання горизонту, але чомусь ця функція на застосована у всіх режимах зйомки. Так у використовуваному режимі інтервальної фотозйомки //Time Lapse Photo// функція вирівнювання горизонту не доступна, хоча у режимі //360 Photo// цей режим застосовується.
+
+Компас ще рідше зустрічається в панорамних камерах.
+
+Зазначені кути можна визначати з допомогою зовнішніх пристроїв (наприклад, як це зазначено у [[Питання вирівнювання горизонту-2]]), а потім відповідно скориговувати знімок, повертаючи його на виміряні кути відхилення. Власне для цього застосовується програмна процедура обертання зображення.
+
+У випадку зображення, покладеного на сферу (//сферична проєкція//), через інваріантність сфери до операції обертання навколо власного центру результат обертання виглядає тривіально наочним, тобто власне зображення залишається незмінним або тотожнім самому собі з точністю до кута обертання.
+
+<<image-basic img/18-pano-sphere-roll-30.png width:80% align:center caption:'Рисунок 18. Результат обертання повного панорамного зображення у сферичній проєкції на 30&deg; кута roll.'>>
+
+На практиці зображення отримується спочатку у проєкції "риб'яче око" (//fish eye//), а потім конвертується і зберігається у рівнокутній (//equirectangular//) проєкції (див. [[Використовувані проєкції зображень]]). І це, як правило, в незалежності від кількості лінз і конструкції камери. Тому, результатом обертання повного зображення знімку у //рівнокутній проєкції// є змінений знімок, на відміну від сферичної проєкції.
+
+Результат такого обертання представлений на рисунку 19.
+
+<<image-basic img/19-pano-equirect-roll-30.png width:80% align:center caption:'Рисунок 19. Обертання повного панорамного зображення у сферичній проєкції на 30&deg; кута roll: вгорі -- початковий знімок, внизу  -- знімок обернений на 30&deg; навколо вісі //R//.'>>
+
+Нижче представлені два модулі, написаних на //Octave//, для обертання зображення: <<mono rotPano.m>> і <<mono rotatePanorama.m>>. Перший з них забезпечує підготовку вхідних даних, включно з матрицею обертання //R// і представлення результату, а другий - власне виконує обертання:
+
+<<details sum:"`ROTPANO.M` -- ПІДГОТОВКА ВХІДНИХ І ПРЕДСТАВЛЕННЯ РЕЗУЛЬТАТУ" src:"""
+
+```matlab
+function im_rot = rotPano(im, yaw, roll, pitch, show)
+  # ROTPANO Rotates panorama
+  #   Call:
+  #       rotImg = rotPano(img_matrix, yaw, roll, pitch);
+  #   or
+  #       rotImg = rotPano(img_file, yaw, roll, pitch);
+  #   or
+  #       rotImg = rotPano(..., show); # show = {true|false}
+  #   or
+  #       rotImg = rotPano # it's a demo with '.\rotPano_demo.JPG'
+  # Angles 'yaw', 'roll', 'pitch' are given in degrees
+  #
+  # Author: https://protw.github.io/oleghbond 11.08.2020
+  # On a basis of: https://github.com/yindaz/PanoBasic
+
+  switch nargin
+    case 0
+      rotPanoTest
+      return
+    case {4, 5}
+      if strcmp(typeinfo(im),'sq_string')
+        im = imread(im);
+      elseif length(strfind(typeinfo(im),'matrix')) > 0
+        ;
+      else
+        disp('ERROR: Argument "im" must be file name (string) or (image) matrix')
+        return
+      endif
+      if nargin == 4
+        show = false;
+      endif
+      R = rot_mat_d (yaw, roll, pitch);
+    otherwise
+      disp('0, 4 OR 5 ARGUMENTS IN ROTATEPANORAMA CALL ARE EXPECTED!')
+      help rotPano
+      return
+  endswitch
+
+  im_rot = uint8(rotatePanorama(im, R));  
+
+  if show
+    im_rot_title = sprintf('Yaw = %d; Roll = %d; Pitch = %d',...
+        yaw,roll,pitch);
+    im_demo(im,im_rot,im_rot_title)
+  endif    
+endfunction
+
+function R = rot_mat_d (yaw, roll, pitch)
+  # Builds rotation matrix from three angles in degrees
+  yaw = yaw*pi/180; # heading, azimuth
+  roll = roll*pi/180;
+  pitch = pitch*pi/180;
+  
+  Rz = [
+    cos(yaw) -sin(yaw)    0;
+    sin(yaw)  cos(yaw)    0;
+    0         0           1];
+  Ry = [
+    cos(roll) 0           sin(roll);
+    0         1           0;
+   -sin(roll) 0           cos(roll)];
+  Rx = [
+    1         0           0;
+    0         cos(pitch) -sin(pitch);
+    0         sin(pitch)  cos(pitch)];
+  R = Rz * Ry * Rx;
+endfunction
+
+function rotPanoTest
+  im_dir = [pwd '\'];
+  im_name = 'rotPano_demo.JPG';
+  im_file = [im_dir im_name];
+
+  disp('READ IMAGE')
+  tic
+  im = imread(im_file);
+  toc
+
+  disp('ROTATE IMAGE')
+  tic
+  yaw = 0; roll = -30; pitch = 0;
+  R = rot_mat_d (yaw, roll, pitch);
+  im_rot = rotPano(im, yaw, roll, pitch, true);
+  toc
+
+  disp('WRITE IMAGE')
+  tic
+  imn_comp = strsplit(im_name,'.');
+  im_rot_file = sprintf('%s(y=%d;r=%d;p=%d)%s',...
+      imn_comp{1},yaw,roll,pitch,'.jpg');
+  imwrite(im_rot,im_rot_file);
+  toc
+endfunction
+
+function im_demo(im,im_rot,im_rot_title)
+  subplot(2,1,1)
+  image(im);
+  grid on
+  axis equal
+  set(gca,'tickdir','out')
+  
+  subplot(2,1,2)
+  image(im_rot);
+  grid on
+  axis equal
+  set(gca,'tickdir','out')
+  title(im_rot_title)
+endfunction
+```
+""">>
+
+<<details sum:"`ROTATEPANORAMA.M` -- ПРОЦЕДУРА ОБЕРТАННЯ" src:"""
+
+```matlab
+function rotImg = rotatePanorama(img, R)
+  # ROTATEPANORAMA Rotates panorama
+  #   img - image matrix of unsigned integer of MxN or MxNxC size
+  #   R - 3D rotation matrix_type
+  #
+  # Original: https://github.com/yindaz/PanoBasic
+  # Reworked (just a bit) by oleghbond 11.08.2020
+  
+  [sphereH, sphereW, C] = size(img);
+
+  ## new uv coordinates
+  [TX TY] = meshgrid(1:sphereW, 1:sphereH);
+  TX = TX(:);
+  TY = TY(:);
+  ANGx = (TX- sphereW/2 -0.5)/sphereW * pi * 2 ;
+  ANGy = -(TY- sphereH/2 -0.5)/sphereH * pi;
+  uvNew = [ANGx ANGy];
+  xyzNew = uv2xyzN(uvNew,1);
+
+  xyzOld = (R\xyzNew')';
+  uvOld = xyz2uvN(xyzOld, 1);
+
+  Px = (uvOld(:,1)+pi) / (2*pi) * sphereW + 0.5;
+  Py = (-uvOld(:,2) + pi/2) / pi * sphereH + 0.5;
+
+  Px = reshape(Px, [sphereH sphereW]);
+  Py = reshape(Py, [sphereH sphereW]);
+
+  # boundary
+  imgNew = double(zeros(sphereH+2, sphereW+2, C));
+  imgNew(2:end-1, 2:end-1, :) = img;
+  imgNew(2:end-1,1,:) = img(:,end,:);
+  imgNew(2:end-1,end,:) = img(:,1,:);
+  imgNew(1,2:sphereW/2+1,:) = img(1,sphereW:-1:sphereW/2+1,:);
+  imgNew(1,sphereW/2+2:end-1,:) = img(1,sphereW/2:-1:1,:);
+  imgNew(end,2:sphereW/2+1,:) = img(end,sphereW:-1:sphereW/2+1,:);
+  imgNew(end,sphereW/2+2:end-1,:) = img(1,sphereW/2:-1:1,:);
+  imgNew(1,1,:) = img(1,1,:);
+  imgNew(end,end,:) = img(end,end,:);
+  imgNew(1,end,:) = img(1,end,:);
+  imgNew(end,1,:) = img(end,1,:);
+
+  rotImg = warpImageFast(imgNew, Px+1, Py+1);
+endfunction
+
+function xyz = uv2xyzN(uv, planeID)
+  # UV2XYZN Convert UV expression to XYZ expression in 3D
+  #   change UV expression to 3-dim unit vector in 3D
+  #   planeID: base plane for UV, 1=XY
+  #   Check xyz2uvN for opposite mapping
+  if !exist('planeID','var')
+    planeID = 1;
+  end
+
+  ID1 = rem(planeID-1+0,3)+1;
+  ID2 = rem(planeID-1+1,3)+1;
+  ID3 = rem(planeID-1+2,3)+1;
+
+  xyz = zeros(size(uv,1),3);
+  xyz(:,ID1) = cos(uv(:,2)).*sin(uv(:,1));
+  xyz(:,ID2) = cos(uv(:,2)).*cos(uv(:,1));
+  xyz(:,ID3) = sin(uv(:,2));
+endfunction
+
+function uv = xyz2uvN( xyz, planeID )
+  # XYZ2UVN Convert XYZ expression to UV expression in 3D
+  #   change 3-dim unit vector XYZ expression to UV in 3D
+  #   planeID: base plane for UV, 1=XY
+  #   Check uv2xyzN for opposite mapping
+  if !exist('planeID', 'var')
+    planeID = 1;
+  end
+
+  ID1 = rem(planeID-1+0,3)+1;
+  ID2 = rem(planeID-1+1,3)+1;
+  ID3 = rem(planeID-1+2,3)+1;
+
+  normXY = sqrt( xyz(:,ID1).^2+xyz(:,ID2).^2);
+  normXY(normXY<0.000001) = 0.000001;
+  normXYZ = sqrt( xyz(:,ID1).^2+xyz(:,ID2).^2+xyz(:,ID3).^2);
+
+  v = asin(xyz(:,ID3)./normXYZ);
+  u = asin(xyz(:,ID1)./normXY);
+  valid = xyz(:,ID2)<0 & u>=0;
+  u(valid) = pi-u(valid);
+  valid = xyz(:,ID2)<0 & u<=0;
+  u(valid) = -pi-u(valid);
+
+  uv = [u v];
+  uv(isnan(uv(:,1)),1) = 0;
+endfunction
+
+function im_warp = warpImageFast(im,XXdense, YYdense)
+  #{
+    Citation:
+    J. Xiao, K. A. Ehinger, A. Oliva and A. Torralba.
+    Recognizing Scene Viewpoint using Panoramic Place Representation.
+    Proceedings of 25th IEEE Conference on Computer Vision and Pattern Recognition, 2012.
+    http://sun360.mit.edu
+  #}
+
+  minX = max(1,floor(min(min(XXdense)))-1);
+  minY = max(1,floor(min(min(YYdense)))-1);
+
+  maxX = min(size(im,2),ceil(max(max(XXdense)))+1);
+  maxY = min(size(im,1),ceil(max(max(YYdense)))+1);
+
+  im = im(minY:maxY,minX:maxX,:);
+
+  for c=1:size(im,3)
+    im_warp(:,:,c) = interp2(im(:,:,c), XXdense-minX+1, YYdense-minY+1,'linear');
+  end
+endfunction
+```
+""">>
