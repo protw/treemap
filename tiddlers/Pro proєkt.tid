@@ -1,8 +1,10 @@
 created: 20200630182245872
 list-before: $:/core/ui/SideBar/Open
-modified: 20200630190208568
+modified: 20200818191725767
 tags: $:/tags/SideBar
 title: Про проєкт
+
+<a href="https://protw.github.io/treemap/gb-2021-nau-team-projects.html" title="Голосуй за проєкти #командаГБНАУ" style="float:right;margin:0 40px 0 0;" target="_blank">[img width=40px [$:/boa/img/chesnut.svg]]</a>
 
 <$link overrideClass="btn btn-success" to="Проєктна ідея">@@fill:white;<<doc-svg $:/boa/img/fa5/tree>>@@ ''Ідея проєкту''</$link>
 
