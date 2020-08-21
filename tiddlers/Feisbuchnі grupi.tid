@@ -1,11 +1,13 @@
 created: 20200820082553930
-modified: 20200821074617138
+modified: 20200821082659055
+revision: 0
 tags: ГБ
 title: Фейсбучні групи
 
 Огляд груп, що можуть підтримати наші проєкти:
 
-<div class="sh-multicol2">
+<div class="flex-row">
+<div class="flex-col-2">
 
 !! Фейсбучні групи НАУ
 
@@ -19,9 +21,8 @@ title: Фейсбучні групи
 # [[НАУковці (Наукове товариство студентів і аспарантів НАУ)|https://www.facebook.com/groups/nauysa]]
 # [[NAUPROF (Проєктний офіс НАУ)|https://www.facebook.com/groups/nauprof]]
 
-<br/>
-<br/>
-<br/>
+</div>
+<div class="flex-col-2">
 
 !! Київ зелений
 
@@ -41,3 +42,6 @@ title: Фейсбучні групи
 # [[Київ, УКРАЇНА!|https://www.facebook.com/groups/485853994952024/]]
 # [[Київ 24|https://www.facebook.com/groups/Kieyv/]]
 # [[Київ Киев Реклама Афіша Інфо|https://www.facebook.com/groups/kyiv.infos/]]
+
+</div>
+</div>
