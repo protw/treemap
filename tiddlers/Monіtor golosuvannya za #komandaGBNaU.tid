@@ -1,7 +1,7 @@
 created: 20200818080424675
-modified: 20200818081025249
+modified: 20200910173501780
 tags: project ГБ
 title: Монітор голосування за #командаГБНАУ
 
 !! Монітор перебігу голосування за проєкти //#командаГБНАУ//, ГБ Києва 2021
-<iframe src="https://nau-gb-2021.wl.r.appspot.com/" width="734" height="680" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
+<iframe src="https://nau-gb-2021.wl.r.appspot.com/" width="734" height="1000" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media" allowFullScreen="true"></iframe>
