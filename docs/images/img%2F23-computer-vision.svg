@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="9.58962in" height="7.16476in" viewBox="0 0 690.453 515.863" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st10">
+	<style type="text/css">
+		.st1 {fill:url(#grad0-4);stroke:#ffffff;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.5}
+		.st2 {fill:#ffffff;font-family:Franklin Gothic Book;font-size:1.33333em;font-weight:bold}
+		.st3 {font-size:1em}
+		.st4 {fill:url(#grad0-4);stroke:#ffffff;stroke-linecap:butt;stroke-width:0.72}
+		.st5 {fill:#ffffff;font-family:Franklin Gothic Book;font-size:0.833336em;font-weight:bold}
+		.st6 {marker-end:url(#mrkr4-16);stroke:#156193;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st7 {fill:#156193;fill-opacity:1;stroke:#156193;stroke-opacity:1;stroke-width:0.28409090909091}
+		.st8 {stroke:#156193;stroke-linecap:butt;stroke-width:3.12}
+		.st9 {fill:#051825;font-family:Franklin Gothic Book;font-size:0.833336em}
+		.st10 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	</style>
+
+	<defs id="Patterns_And_Gradients">
+		<linearGradient id="grad0-4" x1="0" y1="0" x2="1" y2="0" gradientTransform="rotate(90 0.5 0.5)">
+			<stop offset="0.1" stop-color="#2095e2" stop-opacity="1"/>
+			<stop offset="1" stop-color="#146093" stop-opacity="1"/>
+		</linearGradient>
+	</defs>
+	<defs id="Markers">
+		<g id="lend4">
+			<path d="M 2 1 L 0 0 L 2 -1 L 2 1 " style="stroke:none"/>
+		</g>
+		<marker id="mrkr4-16" class="st7" refX="-6.68" orient="auto" markerUnits="strokeWidth" overflow="visible">
+			<use xlink:href="#lend4" transform="scale(-3.52,-3.52) "/>
+		</marker>
+	</defs>
+	<g>
+		<g id="shape1-1" transform="translate(279.215,-233.291)">
+			<path d="M144 479.14 A72 35.2779 -180 1 0 0 479.14 A72 35.2779 -180 1 0 144 479.14 Z" class="st1"/>
+			<text x="25.94" y="475.06" class="st2">Комп&#39;ютерий<tspan x="62.39" dy="1.2em" class="st3">зір</tspan></text>		</g>
+		<g id="shape2-7" transform="translate(341.293,-360.85)">
+			<path d="M0 515.86 L0 479.86 L90 479.86 L90 515.86 L0 515.86 Z" class="st4"/>
+			<text x="18.74" y="500.86" class="st5">Обладнання</text>		</g>
+		<g id="shape3-11" transform="translate(351.215,-305.291)">
+			<path d="M0 515.86 C0 490.63 28.93 488.32 34.25 467.29 L34.29 466.94" class="st6"/>
+		</g>
+		<g id="shape4-17" transform="translate(237.12,-360.85)">
+			<path d="M0 515.86 L0 479.86 L90 479.86 L90 515.86 L0 515.86 Z" class="st4"/>
+			<text x="28.55" y="500.86" class="st5">Зйомка</text>		</g>
+		<g id="shape5-21" transform="translate(351.215,-305.291)">
+			<path d="M0 515.86 C0 490.58 -57.23 488.31 -67.52 467.17 L-67.6 466.81" class="st6"/>
+		</g>
+		<g id="shape6-26" transform="translate(471.12,-204.945)">
+			<path d="M0 515.86 L0 479.86 L90 479.86 L90 515.86 L0 515.86 Z" class="st4"/>
+			<text x="26.25" y="494.86" class="st5">Обробка<tspan x="21.43" dy="1.2em" class="st3">зображень</tspan></text>		</g>
+		<g id="shape7-31" transform="translate(423.215,-269.291)">
+			<path d="M0 515.86 C21.41 515.86 23.68 552.88 41.02 560.75 L41.37 560.82" class="st6"/>
+		</g>
+		<g id="shape8-36" transform="translate(279.215,-141.732)">
+			<path d="M0 515.86 L0 462.32 L90 462.32 L90 515.86 L0 515.86 Z" class="st4"/>
+			<text x="15.38" y="492.09" class="st5">Застосування</text>		</g>
+		<g id="shape9-40" transform="translate(351.215,-233.291)">
+			<path d="M0 515.86 C0 532.24 -20.05 534.51 -25.59 546.98 L-25.67 547.34" class="st6"/>
+		</g>
+		<g id="shape10-45" transform="translate(458.293,-455.35)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="4.14" y="493.06" class="st9">Фото-відео камери</text>		</g>
+		<g id="shape11-49" transform="translate(431.293,-378.85)">
+			<path d="M0 515.86 C13.5 515.86 13.5 492.24 13.5 468.61 C13.5 449.67 13.5 430.73 20.46 423.96 L20.79 423.83"
+					class="st6"/>
+		</g>
+		<g id="shape12-54" transform="translate(458.293,-418.217)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="15.19" y="481.06" class="st9">Вимірювання <tspan x="4.99" dy="1.2em" class="st3">координат камери</tspan></text>		</g>
+		<g id="shape13-59" transform="translate(431.293,-378.85)">
+			<path d="M0 515.86 C11.28 515.86 13.13 475.82 21.31 462.65 L21.6 462.43" class="st6"/>
+		</g>
+		<g id="shape14-64" transform="translate(458.293,-381.083)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="4.68" y="493.06" class="st9">Орієнтація камери</text>		</g>
+		<g id="shape15-68" transform="translate(431.293,-378.85)">
+			<path d="M0 515.86 C10.79 515.86 12.96 502.94 20.29 497.75 L20.63 497.64" class="st6"/>
+		</g>
+		<g id="shape16-73" transform="translate(458.293,-343.949)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="16.99" y="481.06" class="st9">Аксесуари та <tspan x="5.91" dy="1.2em" class="st3">кріплення камери</tspan></text>		</g>
+		<g id="shape17-78" transform="translate(431.293,-378.85)">
+			<path d="M0 515.86 C10.75 515.86 12.94 526.58 20.2 530.94 L20.55 531.04" class="st6"/>
+		</g>
+		<g id="shape18-83" transform="translate(596.411,-372.331)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="19" y="481.06" class="st9">Вбудований <tspan x="26.06" dy="1.2em" class="st3">горизонт</tspan></text>		</g>
+		<g id="shape19-88" transform="translate(548.293,-401.793)">
+			<path d="M0 518.57 C21.45 518.57 23.78 525.53 41.08 527.04 L41.44 527.05" class="st6"/>
+		</g>
+		<g id="shape20-93" transform="translate(596.411,-346.677)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="15.32" y="493.06" class="st9">Компас (M/T)</text>		</g>
+		<g id="shape21-97" transform="translate(548.293,-399.083)">
+			<path d="M0 515.86 C21.49 515.86 23.78 543.3 41.16 549.17 L41.52 549.23" class="st6"/>
+		</g>
+		<g id="shape22-102" transform="translate(596.411,-322.157)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="18.71" y="493.06" class="st9">Стабілізатор</text>		</g>
+		<g id="shape23-106" transform="translate(548.293,-399.083)">
+			<path d="M0 515.86 C21.55 515.86 23.8 563.12 41.31 572.99 L41.66 573.09" class="st6"/>
+		</g>
+		<g id="shape24-111" transform="translate(596.553,-293.598)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="19.61" y="493.06" class="st9">Інклінометр</text>		</g>
+		<g id="shape25-115" transform="translate(548.293,-399.083)">
+			<path d="M0 515.86 C21.71 515.86 23.89 586.65 41.67 600.88 L42.01 601" class="st6"/>
+		</g>
+		<g id="shape26-120" transform="translate(596.553,-269.291)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="25.47" y="493.06" class="st9">OpenSfM</text>		</g>
+		<g id="shape27-124" transform="translate(548.293,-399.083)">
+			<path d="M0 515.86 C21.79 515.86 23.9 607 41.87 624.7 L42.2 624.85" class="st6"/>
+		</g>
+		<g id="shape29-129" transform="translate(593.931,-460.063)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="5.53" y="493.06" class="st9">Вбудований GNSS</text>		</g>
+		<g id="shape30-133" transform="translate(548.293,-436.217)">
+			<path d="M0 515.86 C20.26 515.86 22.53 482.88 38.75 475.48 L39.1 475.41" class="st6"/>
+		</g>
+		<g id="shape31-138" transform="translate(593.931,-431.716)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="9.46" y="493.06" class="st9">Зовнішній GNSS</text>		</g>
+		<g id="shape32-142" transform="translate(548.293,-435.88)">
+			<path d="M0 515.53 C20.2 515.53 22.52 504.95 38.62 502.52 L38.97 502.49" class="st6"/>
+		</g>
+		<g id="shape33-147" transform="translate(120.12,-423.85)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="19.12" y="481.06" class="st9">Планування <tspan x="23.83" dy="1.2em" class="st3">маршруту</tspan></text>		</g>
+		<g id="shape34-152" transform="translate(237.12,-378.85)">
+			<path d="M0 515.86 C-11.34 515.86 -13.15 471.41 -21.44 457.19 L-21.73 456.97" class="st6"/>
+		</g>
+		<g id="shape35-157" transform="translate(120.12,-382.217)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="9.42" y="493.06" class="st9">Інтервал зйомки</text>		</g>
+		<g id="shape36-161" transform="translate(237.12,-378.85)">
+			<path d="M0 515.86 C-10.81 515.86 -12.96 502.17 -20.32 496.71 L-20.66 496.6" class="st6"/>
+		</g>
+		<g id="shape37-166" transform="translate(120.12,-340.583)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="2.7" y="481.06" class="st9">Структура і порядок <tspan x="4.59" dy="1.2em" class="st3">зберігання знімків</tspan></text>		</g>
+		<g id="shape38-171" transform="translate(237.12,-378.85)">
+			<path d="M0 515.86 C-10.79 515.86 -12.96 528.81 -20.29 534.01 L-20.63 534.12" class="st6"/>
+		</g>
+		<g id="shape39-176" transform="translate(3.12,-415.984)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="29.68" y="493.06" class="st9">Ручний</text>		</g>
+		<g id="shape40-180" transform="translate(120.12,-400.217)">
+			<path d="M0 515.86 C-10.98 515.86 -13.03 493.53 -20.67 485.19 L-21 485.03" class="st6"/>
+		</g>
+		<g id="shape41-185" transform="translate(3.12,-389.87)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="20.82" y="493.06" class="st9">Time Lapse</text>		</g>
+		<g id="shape42-189" transform="translate(120.12,-396.957)">
+			<path d="M0 512.6 C-10.66 512.6 -12.9 507.83 -20.01 505.82 L-20.37 505.78" class="st6"/>
+		</g>
+		<g id="shape43-194" transform="translate(3.12,-359.291)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="18.34" y="493.06" class="st9">Travel Lapse</text>		</g>
+		<g id="shape44-198" transform="translate(120.12,-400.217)">
+			<path d="M0 515.86 C-10.83 515.86 -12.97 530.61 -20.36 536.45 L-20.7 536.57" class="st6"/>
+		</g>
+		<g id="shape45-203" transform="translate(3.12,-330.945)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="33.23" y="493.06" class="st9">Відео</text>		</g>
+		<g id="shape46-207" transform="translate(120.12,-400.217)">
+			<path d="M0 515.86 C-11.21 515.86 -13.11 551.2 -21.16 563.2 L-21.46 563.4" class="st6"/>
+		</g>
+		<g id="shape57-212" transform="translate(120.12,-298.949)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="7.38" y="481.06" class="st9">Завантаження до <tspan x="4.67" dy="1.2em" class="st3">спільного сховища</tspan></text>		</g>
+		<g id="shape58-217" transform="translate(237.12,-378.85)">
+			<path d="M0 515.86 C-11.33 515.86 -13.15 559.45 -21.42 573.47 L-21.7 573.69" class="st6"/>
+		</g>
+		<g id="shape59-222" transform="translate(597.333,-195.732)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="1.88" y="481.06" class="st9">Ручний вимюрювач <tspan x="24.99" dy="1.2em" class="st3">кутів </tspan>360</text>		</g>
+		<g id="shape60-227" transform="translate(561.12,-225.425)">
+			<path d="M0 518.34 C15.4 518.34 17.7 525.01 29.19 527 L29.55 527.03" class="st6"/>
+		</g>
+		<g id="shape61-232" transform="translate(597.333,-87.7322)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="20.2" y="493.06" class="st9">Snap2Road</text>		</g>
+		<g id="shape62-236" transform="translate(561.12,-222.945)">
+			<path d="M0 515.86 C18.11 515.86 18.11 545.17 18.11 574.47 C18.11 599.51 18.11 624.54 29.4 631.3 L29.75 631.39"
+					class="st6"/>
+		</g>
+		<g id="shape63-241" transform="translate(597.333,-159.732)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="4.14" y="481.06" class="st9">Інтерполяція даних <tspan x="17.07" dy="1.2em" class="st3">інклінометра</tspan></text>		</g>
+		<g id="shape64-246" transform="translate(561.12,-222.945)">
+			<path d="M0 515.86 C15.58 515.86 17.75 549.34 29.59 558.68 L29.93 558.8" class="st6"/>
+		</g>
+		<g id="shape65-251" transform="translate(597.333,-123.732)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="8.39" y="481.06" class="st9">Авто визначення <tspan x="7.8" dy="1.2em" class="st3">об</tspan>&#39;єктів OpenSfM</text>		</g>
+		<g id="shape66-256" transform="translate(561.12,-222.945)">
+			<path d="M0 515.86 C15.82 515.86 17.82 577.84 30.14 593.51 L30.45 593.69" class="st6"/>
+		</g>
+		<g id="shape67-261" transform="translate(120.12,-233.291)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="25.25" y="493.06" class="st9">Напрями</text>		</g>
+		<g id="shape68-265" transform="translate(279.215,-168.502)">
+			<path d="M0 515.86 C-32.07 515.86 -34.37 444.54 -62.16 434.29 L-62.52 434.23" class="st6"/>
+		</g>
+		<g id="shape69-270" transform="translate(120.12,-49.0393)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="16.68" y="493.06" class="st9">Цільові групи</text>		</g>
+		<g id="shape70-274" transform="translate(279.215,-168.502)">
+			<path d="M0 515.86 C-32.09 515.86 -34.37 603.38 -62.21 615.85 L-62.56 615.93" class="st6"/>
+		</g>
+		<g id="shape71-279" transform="translate(322.159,-81.2125)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="25.33" y="493.06" class="st9">Продукти</text>		</g>
+		<g id="shape72-283" transform="translate(330.274,-141.732)">
+			<path d="M-6.06 515.86 C-6.06 528.12 -15.37 528.12 -19.11 538.97 C-21.08 544.7 -21.5 553.44 -15 556.9 L-14.64 556.98"
+					class="st6"/>
+		</g>
+		<g id="shape75-288" transform="translate(3.12,-99.5745)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="2.2" y="493.06" class="st9">Приватні споживачі</text>		</g>
+		<g id="shape76-292" transform="translate(120.12,-67.0393)">
+			<path d="M0 515.86 C-11.2 515.86 -13.11 481.08 -21.14 469.23 L-21.44 469.03" class="st6"/>
+		</g>
+		<g id="shape77-297" transform="translate(3.12,-66.383)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="4.43" y="481.06" class="st9">Комунальні / держ <tspan x="21.77" dy="1.2em" class="st3">організації</tspan></text>		</g>
+		<g id="shape78-302" transform="translate(120.12,-67.0393)">
+			<path d="M0 515.86 C-10.75 515.86 -12.94 504.86 -20.21 500.38 L-20.56 500.28" class="st6"/>
+		</g>
+		<g id="shape79-307" transform="translate(3.12,0)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="31.17" y="493.06" class="st9">Бізнес</text>		</g>
+		<g id="shape80-311" transform="translate(120.12,-67.0393)">
+			<path d="M0 515.86 C-11.18 515.86 -13.1 549.5 -21.1 561.06 L-21.4 561.26" class="st6"/>
+		</g>
+		<g id="shape81-316" transform="translate(3.12,-33.1915)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="20.94" y="481.06" class="st9">Громадські <tspan x="22.8" dy="1.2em" class="st3">утворення</tspan></text>		</g>
+		<g id="shape82-321" transform="translate(120.12,-67.0393)">
+			<path d="M0 515.86 C-10.74 515.86 -12.93 525.89 -20.17 529.99 L-20.52 530.08" class="st6"/>
+		</g>
+		<g id="shape83-326" transform="translate(3.12,-269.734)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="27.03" y="493.06" class="st9">Екологія</text>		</g>
+		<g id="shape84-330" transform="translate(120.12,-251.291)">
+			<path d="M0 515.86 C-11.02 515.86 -13.04 491.59 -20.75 482.67 L-21.07 482.5" class="st6"/>
+		</g>
+		<g id="shape85-335" transform="translate(3.12,-240.374)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="26.82" y="493.06" class="st9">Геодезія</text>		</g>
+		<g id="shape86-339" transform="translate(120.12,-247.746)">
+			<path d="M0 512.32 C-10.65 512.32 -12.9 507.91 -20.01 506.05 L-20.36 506.01" class="st6"/>
+		</g>
+		<g id="shape87-344" transform="translate(3.12,-211.013)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="24.78" y="493.06" class="st9">Військові</text>		</g>
+		<g id="shape88-348" transform="translate(120.12,-251.291)">
+			<path d="M0 515.86 C-10.82 515.86 -12.97 530.17 -20.34 535.85 L-20.68 535.97" class="st6"/>
+		</g>
+		<g id="shape89-353" transform="translate(3.12,-181.652)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="22.05" y="493.06" class="st9">Мистецтво</text>		</g>
+		<g id="shape90-357" transform="translate(120.12,-251.291)">
+			<path d="M0 515.86 C-11.21 515.86 -13.11 551.49 -21.17 563.56 L-21.47 563.76" class="st6"/>
+		</g>
+		<g id="shape91-362" transform="translate(3.12,-152.291)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="35.25" y="493.06" class="st9">Агро</text>		</g>
+		<g id="shape92-366" transform="translate(120.12,-251.291)">
+			<path d="M0 515.86 C-13.5 515.86 -13.5 536.11 -13.5 556.36 C-13.5 572.52 -13.5 588.67 -20.35 594.54 L-20.69 594.66"
+					class="st6"/>
+		</g>
+		<g id="shape93-371" transform="translate(435.545,-67.4955)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="12.37" y="493.06" class="st9">Інвентаризація</text>		</g>
+		<g id="shape94-375" transform="translate(412.159,-99.4407)">
+			<path d="M0 516.09 C8.87 516.09 11.01 523.99 16.64 527.8 L16.98 527.9" class="st6"/>
+		</g>
+		<g id="shape95-380" transform="translate(435.545,-144.443)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="7.44" y="493.06" class="st9">ЗD-реконструкція</text>		</g>
+		<g id="shape96-384" transform="translate(412.159,-99.2126)">
+			<path d="M0 515.86 C11.69 515.86 11.69 500.06 11.69 484.25 C11.69 472.24 11.69 460.24 16.81 455.16 L17.15 455.03"
+					class="st6"/>
+		</g>
+		<g id="shape97-389" transform="translate(435.545,-118.794)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="8.53" y="493.06" class="st9">ЗD-друк моделей</text>		</g>
+		<g id="shape98-393" transform="translate(412.159,-99.2126)">
+			<path d="M0 515.86 C9.34 515.86 11.22 491.88 17.56 482.23 L17.86 482.03" class="st6"/>
+		</g>
+		<g id="shape99-398" transform="translate(435.545,-93.1447)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="18.84" y="493.06" class="st9">Обстеження</text>		</g>
+		<g id="shape100-402" transform="translate(412.159,-98.092)">
+			<path d="M0 514.74 C8.84 514.74 11 507.92 16.58 504.59 L16.92 504.5" class="st6"/>
+		</g>
+		<g id="shape101-407" transform="translate(435.545,-41.8465)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="28.42" y="493.06" class="st9">3D-тури</text>		</g>
+		<g id="shape102-411" transform="translate(412.159,-99.2126)">
+			<path d="M0 515.86 C9.37 515.86 11.23 541.15 17.62 551.19 L17.92 551.4" class="st6"/>
+		</g>
+		<g id="shape103-416" transform="translate(596.411,-51.7322)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="13.04" y="481.06" class="st9">Розпізнавання <tspan x="28.59" dy="1.2em" class="st3">об</tspan>&#39;єктів</text>		</g>
+		<g id="shape104-421" transform="translate(561.12,-222.945)">
+			<path d="M0 515.86 C17.65 515.86 17.65 554.17 17.65 592.47 C17.65 625.19 17.65 657.91 28.65 666.75 L28.99 666.87"
+					class="st6"/>
+		</g>
+		<g id="shape105-426" transform="translate(435.545,-13.5001)">
+			<path d="M0 497.86 L90 497.86" class="st8"/>
+			<text x="10.85" y="493.06" class="st9">3D-Картографія</text>		</g>
+		<g id="shape106-430" transform="translate(412.159,-99.2126)">
+			<path d="M0 515.86 C11.69 515.86 11.69 532.79 11.69 549.72 C11.69 562.62 11.69 575.51 16.86 580.92 L17.2 581.06"
+					class="st6"/>
+		</g>
+	</g>
+</svg>
