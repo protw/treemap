@@ -1,34 +1,34 @@
 created: 20200921193414896
-modified: 20200921210359619
+modified: 20200922134647657
 tags: concept soft
 title: Розберемось із SfM
 
-Техніка [[SfM - Structure from Motion (структура із руху)|https://uk.wikipedia.org/wiki/Структура_із_руху]] -- процес оцінювання тривимірної структури об'єкта (сцени) через аналіз послідовності його двовимірних зображень, знятих з різних ракурсів. Саме завдяки спроможності визначення координат //особливих точок// (//features//) одночасно з коригуванням (уточненням) положення і напряму знімків (//pose//) ця техніка цікава також в контексті проєкту TREEMAP. 
+Техніка [[SfM - Structure from Motion (структура із руху)|https://uk.wikipedia.org/wiki/Структура_із_руху]] -- процес оцінювання тривимірної структури об'єкта (сцени) через аналіз послідовності його двовимірних зображень, знятих з різних ракурсів. Саме завдяки спроможності визначення координат //ознак// (//features//) одночасно з коригуванням (уточненням) положення і напряму знімків (//pose//) ця техніка цікава також в контексті проєкту TREEMAP. 
 
 Серед різноманіття програмних реалізацій SfM у зв'язку з використанням панорамних зображень для цілей проєкту був обраний пакет [[OpenSfM|https://github.com/mapillary/OpenSfM]], що підтримує власне панорамні зображення.
 
 Нижче приведений приклад 3D-реконструкції (офісної будівлі в Києві) з восьми панорамних знімків:
 
-<center><div class="sketchfab-embed-wrapper">
-    <iframe title="A 3D model" width="640" height="480" src="https://sketchfab.com/models/e4cf1af5e95b417fae2aa4db9b542b98/embed?autostart=1&amp;ui_controls=1&amp;ui_infos=1&amp;ui_inspector=1&amp;ui_stop=1&amp;ui_watermark=1&amp;ui_watermark_link=1" frameborder="0" allow="autoplay; fullscreen; vr" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
-    <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;">
-        <a href="https://sketchfab.com/3d-models/office-building-in-kyiv-e4cf1af5e95b417fae2aa4db9b542b98?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Office building in Kyiv</a>
-        by <a href="https://sketchfab.com/oleghbond?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">oleghbond</a>
-        on <a href="https://sketchfab.com?utm_medium=embed&utm_source=website&utm_campaign=share-popup" target="_blank" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a>
-    </p>
-</div></center>
+{{img/24-sfm-3d-reconstruction.sketchfab}}
 
 Спробуємо дещо розібратись з технікою //OpenSfM// і як її можна пристосувати до вирішення завдань проєкту.
 
-[[3D-реконструкція відбувається у декілька кроків|https://www.opensfm.org/docs/using.html#reconstruction-commands]], включно з виявленням особливих точок, встановленням відповідності виявлених точок між окремими зображеннями, SFM реконструкцією та щільним виявленням точок (//dense matching//). //OpenSfM// виконує ці дії, використовуючи різні команди, які зберігають результати у файлах для використання іншими командами. Для запуску цих команд використовується одна програма <<mono bin/opensfm>>. Перший аргумент програми - це команда для запуску, а другий - набір даних, на якому запускаються команди.
+[[3D-реконструкція відбувається у декілька кроків|https://www.opensfm.org/docs/using.html#reconstruction-commands]], включно з виявленням //ознак//, встановленням збігів ознак між різними зображеннями, SFM реконструкцією та щільним виявленням ознак (//dense matching//). //OpenSfM// виконує ці дії, використовуючи різні команди, які зберігають результати у файлах для використання іншими командами. Для запуску цих команд використовується одна програма <<mono bin/opensfm>>. Перший аргумент програми - це команда для запуску, а другий - набір даних (//dataset//), на якому запускаються команди.
 
-Ось сторінка використання bin/opensfm, на якій перелічені доступні команди:
+Для ознайомлення з типовим конвеєром //OpenSfM// розглянемо  базовий скрипт <<mono bin/opensfm_run_all>>, що включає такі основні команди в їхній хронологічній послідовності:
 
-* extract_metadata
-* detect_features
-* match_features
-* create_tracks
-* reconstruct
-* mesh
-* undistort
-* compute_depthmaps
+|!Команда|!Призначення|!Розміщення результату|
+|^<<mono extract_metadata>> |^Зчитує метадані зображень |^Фолдер <<mono //exif//>> і файл <<mono //camera_models.json//>> |
+|^<<mono detect_features>> |^Виявляє ознаки  |^Фолдер <<mono //feature//>> |
+|^<<mono match_features>> |^Виявляє збіги ознак з різних зображень |^Фолдер <<mono //matches//>> |
+|^<<mono create_tracks>> |^Пов'язує збіги ознак з різних зображень у трек ознаки |^Файл <<mono //tracks.csv//>> |
+|^<<mono reconstruct>> |^Знаходить тривимірне положення треків (//structure//) разом із положенням камер (//motion//) |^Файл <<mono //reconstruction.json//>> |
+|^<<mono mesh>> |^Обчислює грубу трикутну сітку сцени для кожного зображення |^Файл <<mono //reconstruction.meshed.json//>> |
+|^<<mono undistort>> |^Створює неспотворену версію реконструкції, треків та зображень для обчислення карт глибини |^ |
+|^<<mono compute_depthmaps>> |^Обчислює щільну хмару точок сцени шляхом обчислення та злиття карт глибини |^Глибинні карти у фолдері <<mono //depthmaps//>>, об'єднана хмара точок у файлі <<mono //undistorted/depthmaps/merged.ply//>> |
+
+!! ІДЕЯ ПРИСТОСУВАННЯ ДО ВИРІШЕННЯ ЗАВДАНЬ ПРОЄКТУ
+
+Виявлення ознак алгоритмом <<mono detect_features>> не спрямовано на пошук конкретного типу об'єктів, а скоріше для виявлення будь-яких доступних оптичному зору об'єктів і визначення їхнього 3D розташування.
+
+Певною мірою в проєкті можна редукувати задачу виявлення ознак, залучивши людину до їхнього позначення. Наприклад, це може бути середина стовбура дерева у площині поверхні землі (газону). Таким чином, замість команди <<mono detect_features>> кожний знімок вимагатиме ручного відмічання декількох десятків таких ознак.
