@@ -1,5 +1,5 @@
 created: 20200921193414896
-modified: 20200923130953230
+modified: 20200923171916591
 tags: concept soft
 title: Розберемось із SfM
 
@@ -57,23 +57,7 @@ OPENSFM_TRACKS_VERSION_v1
 03.jpg	1730	4451	0.205076	0.0178364	0.00832819	36	26	23
 ```
 
-Також доречно врахувати як нормалізацію (перехід від пікселів) координат зображення так і зворотну процедуру:
-
-```python
-def normalized_image_coordinates(pixel_coords, width, height):
-    size = max(width, height)
-    p = np.empty((len(pixel_coords), 2))
-    p[:, 0] = (pixel_coords[:, 0] + 0.5 - width / 2.0) / size
-    p[:, 1] = (pixel_coords[:, 1] + 0.5 - height / 2.0) / size
-    return p
-
-def denormalized_image_coordinates(norm_coords, width, height):
-    size = max(width, height)
-    p = np.empty((len(norm_coords), 2))
-    p[:, 0] = norm_coords[:, 0] * size - 0.5 + width / 2.0
-    p[:, 1] = norm_coords[:, 1] * size - 0.5 + height / 2.0
-    return p
-```
+Також доречно врахувати як нормалізацію (перехід від пікселів) координат зображення так і зворотну процедури: <<mono normalized_image_coordinates>><<ref-link "https://github.com/mapillary/OpenSfM/blob/master/opensfm/features.py#L57">> і <<mono denormalized_image_coordinates>><<ref-link "https://github.com/mapillary/OpenSfM/blob/master/opensfm/features.py#L65">>.
 
 <<alert-warning "Опис процедур і структур, доданий нижче, хоча і ґрунтується на здоровому глузді на сьогодні поки що є припущенням і потребує дослідження та перевірки!">>
 
@@ -89,7 +73,7 @@ def denormalized_image_coordinates(norm_coords, width, height):
 
 !!! ''Аналіз результату реконструкції''
 
-Результат 3D-реконструкції розміщений у файлі <<mono reconstruction.json>> у корені аналізованого набору даних.
+Результат 3D-реконструкції розміщений у файлі <<mono reconstruction.json>> у корені аналізованого набору даних<<ref-link "https://opensfm.readthedocs.io/en/latest/dataset.html#reconstruction-file-format">>.
 
 Структура верхнього рівня <<mono reconstruction.json>> така:
 
@@ -103,8 +87,10 @@ def denormalized_image_coordinates(norm_coords, width, height):
 : Структура верхнього рівня <<mono shots>> включає перелік імен файлів знімків (без файлового шляху -- лише ім'я, точка, розширення). Глибше в структурі кожного знімку на цікавитиме принаймні три структурних елементи, кожний з яких містить вектор з трьох дійсних чисел: <div>
 
 * <<mono rotation>> - поправка напряму погляду камери в знімку в кутах Ейлера в радіанах;
-* <<mono translation>> - поки що не відомо;
-* <<mono gps_position>> - поправка координат розташування камери в знімку в метрах.
+* <<mono translation>> - переміщення камери відносно початкового кадру <<ref-link "https://www.opensfm.org/docs/_modules/opensfm/types.html#Pose">>, схоже в метрах;
+* <<mono gps_position>> - GPS координати у фреймі реконструкції <<ref-link "https://opensfm.readthedocs.io/en/latest/dataset.html#reconstruction-file-format">>, схоже, що відносно <<mono reference_lla>>, схоже в метрах.
+
+<<mono reference_lla>>
 
 </div>
 

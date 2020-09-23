@@ -1,0 +1,6 @@
+created: 20200923163835996
+modified: 20200923171514377
+tags: $:/tags/Macro
+title: $:/boa/macro/ref-link
+
+\define ref-link(href) ^^<a href="$href$" target="_blank" style="fill:RoyalBlue;"><<doc-svg $:/core/images/link>></a>^^
