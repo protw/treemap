@@ -1,5 +1,5 @@
 created: 20200929071657070
-modified: 20200929164249254
+modified: 20201003075945169
 tags: concept soft
 title: Ще раз про трикутник
 
@@ -17,25 +17,25 @@ title: Ще раз про трикутник
 
 $$
 \begin{alignedat}{2}
-   C &= -\left(h_C - m_{CA} \right) +h_{CB} \\
-   B &= 180\degree - \left(-\left(h_B - m_{BA} \right) + h_{CB}\right)
+   C &= -\left(h_C + m_{CA} \right) +h_{CB} \\
+   B &= 180\degree - \left(-\left(h_B + m_{BA} \right) + h_{CB}\right)
 \end{alignedat}
 $$
 
 Звідси отримаємо величину кута $$A$$:
 
 $$
-A = h_C - h_B + m_{BA} - m_{CA}
+A = 180\degree - C - B = h_C + m_{CA} - h_B - m_{BA}
 $$
 
-І зрештою, координати точки $$A$$ можна отримати через азимут і відстань до неї з будь-якої точок $$C$$ і $$B$$ з відомими координатами:
+І зрештою, координати точки $$A$$ можна отримати через відстань до неї ($$c$$ або $$b$$) і  азимут ($$h_{CA}$$ або $$h_{BA}$$) з будь-якої точок $$C$$ і $$B$$ з відомими координатами:
 
 <div class="flex-row"style="margin-left:24px;">
 <div class="flex-col-1">
 $$
 \begin{alignedat}{2}
    b &= a {\sin B \above{1px} \sin A} \\
-   h_{CA} &= h_C - m_{CA}
+   h_{CA} &= h_C + m_{CA}
 \end{alignedat}
 $$
 </div>
@@ -46,7 +46,31 @@ $$
 $$
 \begin{alignedat}{2}
    c &= a {\sin C \above{1px} \sin A} \\
-   h_{BA} &= h_B - m_{BA}
+   h_{BA} &= h_B + m_{BA}
+\end{alignedat}
+$$
+</div>
+</div>
+
+Власне значення координат буде отримано таким чином:
+
+<div class="flex-row"style="margin-left:24px;">
+<div class="flex-col-1">
+$$
+\begin{alignedat}{2}
+   x_A &= b \sin h_{CA} + x_C \\
+   y_A &= b \cos h_{CA} + y_C
+\end{alignedat}
+$$
+</div>
+<div class="flex-col-1" style="text-align:center;margin-top:24px;">
+або
+</div>
+<div class="flex-col-1">
+$$
+\begin{alignedat}{2}
+   x_A &= c \sin h_{BA} + x_B \\
+   y_A &= c \cos h_{BA} + y_B
 \end{alignedat}
 $$
 </div>
