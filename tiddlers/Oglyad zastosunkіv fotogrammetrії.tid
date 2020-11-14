@@ -1,0 +1,41 @@
+created: 20201114101657787
+modified: 20201114143733127
+tags: 
+title: Огляд застосунків фотограмметрії
+
+За [[визначенням з Вікіпедії|https://uk.wikipedia.org/wiki/Фотограмметрія]] //фотограмме́трія// (грец. φως, у родовому відмінку φοτος — світло, γραμμα — написання, μετρεω — вимірюю) — наука, котра вивчає явища, форми й положення різних предметів у просторі, об'єкти та їх розміри шляхом вимірювань їх фотографічного зображення. Фотограмметрія застосовується в геодезії, картографії, військовій справі, космічних дослідженнях.
+
+Користуючись оглядом із сайту [[https://all3dp.com/|https://all3dp.com/1/best-photogrammetry-software/#section-free-photogrammetry-software]] представимо доволі потужний перелік програмних продуктів, безпосередньо спрямованих на вирішення завдань фотограмметрії.
+
+|table-striped-row|k
+|!Назва і веб-адреса продукту|!Тип зйомки|!Формати вихідних файлів|!Ціна|
+|^[[COLMAP|https://colmap.github.io/index.html]] |^аеро,  з близької відстані |^ply, vrml |^Безкоштовно |
+|^[[Meshroom|https://alicevision.github.io/#meshroom]] |^аеро,  з близької відстані |^abc, obj |^Безкоштовно |
+|^[[MicMac|https://micmac.ensg.eu/index.php/Accueil]] |^аеро,  з близької відстані |^geotiff, ply, xml |^Безкоштовно |
+|^[[Multi-View Environment|https://www.gcc.tu-darmstadt.de/home/proj/mve/]] |^аеро,  з близької відстані |^MVE |^Безкоштовно |
+|^[[OpenMVG|https://qgis.org/en/site/]] |^аеро,  з близької відстані |^ply |^Безкоштовно |
+|^[[OpenSfM|https://www.opensfm.org/]] |^аеро,  з близької відстані |^ply |^Безкоштовно |
+|^[[Regard3D|http://www.regard3d.org/index.php]] |^аеро,  з близької відстані |^obj, ply |^Безкоштовно |
+|^[[VisualSFM|http://ccwu.me/vsfm/]] |^аеро,  з близької відстані |^ply |^Безкоштовно |
+|^[[3DF Zephyr|https://www.3dflow.net/]] |^аеро,  з близької відстані |^ply, obj, fbx, pdf 3D, u3d, dae, pts, ptx, xyz, txt, las, e57 |^Обмежена безкоштовна версія та платна версія від € 149 + податок |
+|^[[Autodesk ReCap|https://www.autodesk.com/products/recap/overview]] |^аеро,  з близької відстані |^asc, cl3, clr, e57, fls, fws, isproj, las, pcg, ptg, pts, ptx, rds, txt, xyb, xyz, zfs, zfprj |^Від $ 40 / місяць |
+|^[[Agisoft Metashape|http://www.agisoft.com/]] |^аеро,  з близької відстані |^fbx |^Від 179 доларів |
+|^[[Bentley ContextCapture|https://www.bentley.com/en/products/brands/contextcapture]] |^аеро,  з близької відстані |^3ms, 3sm, kml, dae, fbx, obj, dae, stl |^На запит |
+|^[[Correlator3D|https://www.simactive.com/]] |^аеро |^.asc, geotiff, .las |^Від $ 250 / місяць |
+|^[[DatuSurvey|https://www.datumate.com/products/datusurvey/]] |^аеро,  з близької відстані |^ENH, NEH, DXF, PLY, PDF, LAS, PNG, GTIFF |^Від $ 350 / місяць |
+|^[[DroneDeploy|https://www.dronedeploy.com/]] |^аеро |^dxf, GeoTIFF, las, obj, xyz |^$ 149 / місяць або $ 99 / місяць при щорічній оплаті |
+|^[[Elcovision 10|https://en.elcovision.com/]] |^аеро,  з близької відстані |^All currently known image formats |^На запит |
+|^[[iWitnessPRO|https://www.photometrix.com.au/iwitnesspro-v4/]] |^аеро,  з близької відстані |^TXT, CSV, PTS, LAS, PLY, DXF, KML |^$ 2495 |
+|^[[IMAGINE Photogrammetry|https://www.hexagongeospatial.com/products/power-portfolio/imagine-photogrammetry]] |^аеро |^img, igg, ovr. l, noaa, rpf, ddf, dem, til, dt2, ecrg, hdr, xml, ecw, url, ant, dig, alg, ers, gis, lan |^На запит |
+|^[[LiMapper|https://greenvalleyintl.com/software/limapper/]] |^аеро,  з близької відстані |^PLY, OBJ, LAS |^На запит |
+|^[[Photomodeler|https://www.photomodeler.com/index.html]] |^аеро,  з близької відстані |^3ds, 3dm, dxf, igs, kml, kmz, las, ma, ms, obj, pts, byu, facet, iv, ply, stl, txt, wrl |^Одноразова плата в розмірі 995 доларів США або від 49 доларів на місяць |
+|^[[Pix4D|https://pix4d.com/]] |^аеро |^obj, fix, dxf, las, las, kml, tif, osgb, slpk, shp |^Одноразова плата в розмірі 3990 євро або 260 євро на місяць або 217 євро на місяць при щорічній оплаті |
+|^[[RealityCapture|https://www.capturingreality.com/Home]] |^аеро,  з близької відстані |^jpg, png, XYZ, XYZRGB, tiff, bmp, dib, rle, jpeg, jpe, jfif, exif, exr, tif, wdp, jxr, dds, KML, KMZ, obj, ply, partlist, fbx, dxf, dae, bvh, htr, trc, asf, amc, c3d, aoa, mcd, wmv, mp4 |^Від $ 99 / за три місяці |
+|^[[SOCET GXP|https://www.geospatialexploitationproducts.com/content/socet-gxp/]] |^аеро |^ |^На запит |
+|^[[Trimble Inpho|https://geospatial.trimble.com/products-and-solutions/inpho]] |^аеро,  з близької відстані |^ |^На запит |
+|^[[WebODM|https://www.opendronemap.org/webodm/]] |^аеро |^GeoTIFF, png, las, obj |^Від 57 доларів |
+
+
+<style>
+td {max-width:260px;
+</style>
