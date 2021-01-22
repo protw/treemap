@@ -1,5 +1,5 @@
 created: 20201114101657787
-modified: 20201114143937042
+modified: 20210122113757340
 tags: soft tool
 title: Огляд застосунків фотограмметрії
 
@@ -13,6 +13,7 @@ title: Огляд застосунків фотограмметрії
 |^[[Meshroom|https://alicevision.github.io/#meshroom]] |^аеро,  з близької відстані |^abc, obj |^Безкоштовно |
 |^[[MicMac|https://micmac.ensg.eu/index.php/Accueil]] |^аеро,  з близької відстані |^geotiff, ply, xml |^Безкоштовно |
 |^[[Multi-View Environment|https://www.gcc.tu-darmstadt.de/home/proj/mve/]] |^аеро,  з близької відстані |^MVE |^Безкоштовно |
+|^[[OpenDroneMap|https://github.com/OpenDroneMap]] |^аеро |^ply, laz, obj |^Безкоштовно |
 |^[[OpenMVG|https://qgis.org/en/site/]] |^аеро,  з близької відстані |^ply |^Безкоштовно |
 |^[[OpenSfM|https://www.opensfm.org/]] |^аеро,  з близької відстані |^ply |^Безкоштовно |
 |^[[Regard3D|http://www.regard3d.org/index.php]] |^аеро,  з близької відстані |^obj, ply |^Безкоштовно |
