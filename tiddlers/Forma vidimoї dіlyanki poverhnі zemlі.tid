@@ -1,0 +1,120 @@
+created: 20210423133908092
+modified: 20210423141243852
+tags: tool
+title: Форма видимої ділянки поверхні землі
+
+> У першу чергу викладений тут матеріал стосується звичайних перспективних камер і в меншій мірі стосується або зовсім не стосується сферичних камер, камер "риб'яче око" та інших короткофокусних камер.
+
+Під час планування аерофотозйомки у цілях фотограмметрії важливим фактором є направленість камери відносно горизонту (або вертикалі). 
+
+Якщо камера спрямована строго в надір, то форма видимої ділянки пласкої поверхні землі має форму прямокутника зі співвідношенням сторін відповідно до камери. 
+
+У разі відхилення від вертикалі в бік широкої сторони прямокутника, ця форма (на поверхні землі) набуватиме форму рівнобедреної трапеції. При тому основа цієї трапеції (довша сторона) буде набагато ширша за початкової ширини (для напряму у надір) смуги сканування.
+
+Всі ці речі важливі для оцінки ступеню перекриття знімків і відстані між суміжними смугами прольоту, адже від цих параметрів залежатиме як якість побудованої моделі, так і тривалість маршруту.
+
+Для розрахунку форми видимої ділянки пласкої поверхні землі була використана проста геометрична модель поля зору камери у вигляді прямокутної піраміди. Результати розрахунку представлені нижче:
+
+<center>
+[img width=80% [img/31-groundFrame.svg]]
+</center>
+
+Розрахунки проведені в //Octave//, код наведений нижче:
+
+```matlab
+function groundFrame
+  # Generate shape and dimensions of visible area for perspective
+  # camera of the UAV board
+  
+  pkg load matgeom
+  
+  alpha = 94; # camera's widest aperture angle, degree
+  ar = 3/4;   # camera's aspect ratio, widest side is perpendicular
+              # to horizontal flight direction
+  beta = [7 15 24 30]; 
+              # colatitude angle (degree) of camera optical axis 
+              # towards horizontal flight direction, beta = 0 means 
+              # camera looks to nadir, beta = 90 means camera looks 
+              # horizontally towards flight direction
+  close all
+  for i = 1:length(beta)
+    buildFrame(alpha,ar,beta(i),i)
+  endfor
+endfunction
+
+function buildFrame(alpha,ar,beta,i)
+  alpha = deg2rad(alpha);
+  beta = deg2rad(beta);
+  h = 10;             # quadrangular pyramid height
+  w = h*tan(alpha/2); # widest half width of pyramid basement
+  v = ar*w;           # other half width of pyramid basement
+  tip = [0 0 h];      # coords of pyramid's tip
+  base = [            # coords of pyramid's basement vertices
+     w  v 0;
+    -w  v 0;
+    -w -v 0;
+     w -v 0];
+  ppnts = [           # three points forming plane
+    w 0 0;
+    0 v 0;
+    0 0 0];
+
+  # rotate plane coplanar with basement by angle beta
+  pd = rotPntsTipOx(ppnts,tip,beta);
+  planer = createPlane(pd(:,1:3));
+  # intersect pyramid edges with rotated plane 'planer'
+  tipb = repmat(tip,[size(base,1) 1]);
+  pyredges = createLine3d(tipb, base);
+  baser = intersectLinePlane(pyredges, planer);
+  # return intersection points in previous coplanar position
+  basexy = rotPntsTipOx(baser,tip,-beta)(:,1:3);
+
+  # plot intermediate result
+  figure(1)
+  plot3(ppnts(:,1),ppnts(:,2),ppnts(:,3),'-or',...
+        pd(:,1),pd(:,2),pd(:,3),'-ob',
+        tip(1),tip(2),tip(3),'og',
+        base(:,1),base(:,2),base(:,3),'-ok',
+        baser(:,1),baser(:,2),baser(:,3),'-om')
+  grid on, axis equal, rotate3d on
+  xlabel('X'), ylabel('Y'), zlabel('Z')
+
+  basexyc = [basexy(:,1:2); basexy(1,1:2)];
+  xy = mean(basexyc(3:4,:)) + [0 1];
+  sbeta = sprintf('beta = %.1f deg',rad2deg(beta));
+
+  # plot shape and dimensions of visible area for perspective
+  # camera of the UAV board
+  figure(2)
+  hold on
+  plot(basexyc(:,1),basexyc(:,2),'-or',0,0,'ob')
+  text(xy(1),xy(2),sbeta)
+  hold off
+  
+  if i > 1
+    return
+  endif
+  grid on, axis equal, box on
+  xlabel('X'), ylabel('Y')
+  title('Camera''s frame of view on the ground')
+  s1 = sprintf('Height = %.1f, m',h);
+  s2 = sprintf('Field of view = %.1f, deg',rad2deg(alpha));
+  s3 = sprintf('Aspect ratio = %.2f',ar);
+  x0 = 12;
+  y0 = 5;
+  text(x0,y0-1,s1)
+  text(x0,y0-2,s2)
+  text(x0,y0-3,s3)
+endfunction
+
+function pd = rotPntsTipOx(ppnts,tip,beta)
+  # rotate 3 points of plane around pyramid's tip over OX
+  pd = [ppnts ones(size(ppnts,1),1)];
+  t = createTranslation3d(-tip);
+  pd = pd*t';
+  r = createRotationOx(beta);
+  pd = pd*r';
+  t = createTranslation3d(tip);
+  pd = pd*t';
+endfunction
+```
