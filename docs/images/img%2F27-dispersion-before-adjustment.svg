@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="800px" height="660px" version="1.1" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd"
+viewBox="0 0 777.4 640.79"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <g id="Layer_x0020_1">
+  <polygon fill="white" points="62.62,590.62 769.3,590.62 769.3,33.26 62.62,33.26 "/>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="63.01,33.26 63.01,590.62 62.22,590.62 62.22,33.26 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="204.35,33.26 204.35,590.62 203.56,590.62 203.56,33.26 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="345.69,33.26 345.69,590.62 344.89,590.62 344.89,33.26 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="487.02,33.26 487.02,590.62 486.23,590.62 486.23,33.26 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="628.36,33.26 628.36,590.62 627.56,590.62 627.56,33.26 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.69,33.26 769.69,590.62 768.9,590.62 768.9,33.26 "/>
+  </g>
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="590.62" x2="62.62" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="33.26" x2="62.62" y2= "40.33" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="203.95" y1="590.62" x2="203.95" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="203.95" y1="33.26" x2="203.95" y2= "40.33" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="345.29" y1="590.62" x2="345.29" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="345.29" y1="33.26" x2="345.29" y2= "40.33" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="486.62" y1="590.62" x2="486.62" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="486.62" y1="33.26" x2="486.62" y2= "40.33" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="627.96" y1="590.62" x2="627.96" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="627.96" y1="33.26" x2="627.96" y2= "40.33" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="590.62" x2="769.3" y2= "583.55" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="33.26" x2="769.3" y2= "40.33" />
+  <g transform="matrix(1 0 0 1 -342.13 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -200.795 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">5</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -64.2085 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">1</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+  </g>
+  <g transform="matrix(1 0 0 1 77.1264 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">1</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">5</text>
+  </g>
+  <g transform="matrix(1 0 0 1 218.462 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">2</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+  </g>
+  <g transform="matrix(1 0 0 1 359.797 291.254)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">2</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">5</text>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,591.02 62.62,591.02 62.62,590.22 769.3,590.22 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,479.54 62.62,479.54 62.62,478.75 769.3,478.75 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,368.07 62.62,368.07 62.62,367.28 769.3,367.28 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,256.6 62.62,256.6 62.62,255.81 769.3,255.81 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,145.13 62.62,145.13 62.62,144.33 769.3,144.33 "/>
+  </g>
+  <g>
+   <polygon fill="#262626" fill-rule="nonzero" fill-opacity="0.149020" points="769.3,33.65 62.62,33.65 62.62,32.86 769.3,32.86 "/>
+  </g>
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="590.62" x2="69.69" y2= "590.62" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="590.62" x2="762.22" y2= "590.62" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="479.15" x2="69.69" y2= "479.15" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="479.15" x2="762.22" y2= "479.15" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="367.67" x2="69.69" y2= "367.67" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="367.67" x2="762.22" y2= "367.67" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="256.2" x2="69.69" y2= "256.2" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="256.2" x2="762.22" y2= "256.2" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="144.73" x2="69.69" y2= "144.73" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="144.73" x2="762.22" y2= "144.73" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="62.62" y1="33.26" x2="69.69" y2= "33.26" />
+  <line fill="none" stroke="#262626" stroke-width="0.79" stroke-miterlimit="22.9256" x1="769.3" y1="33.26" x2="762.22" y2= "33.26" />
+  <g transform="matrix(1 0 0 1 -354.802 273.046)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -369.049 161.573)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">.</text>
+   <text x="414.31" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">2</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -369.049 50.1006)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">.</text>
+   <text x="414.31" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">4</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -369.049 -61.3716)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">.</text>
+   <text x="414.31" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">6</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -369.049 -172.844)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">0</text>
+   <text x="409.44" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">.</text>
+   <text x="414.31" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">8</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -354.802 -284.317)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="15.83px" font-family="Arial">1</text>
+  </g>
+  <g>
+   <path fill="#262626" fill-rule="nonzero" d="M62.62 590.22l0 0.8 -0.4 0 0 -0.8 0.4 0zm706.68 0.8l-706.68 0 0 -0.8 706.68 0 0 0.8zm0 0l0 -0.8 0.39 0 0 0.8 -0.39 0z"/>
+  </g>
+  <g>
+   <path fill="#262626" fill-rule="nonzero" d="M62.62 32.86l0 0.79 -0.4 0 0 -0.79 0.4 0zm706.68 0.79l-706.68 0 0 -0.79 706.68 0 0 0.79zm0 0l0 -0.79 0.39 0 0 0.79 -0.39 0z"/>
+  </g>
+  <g>
+   <path fill="#262626" fill-rule="nonzero" d="M62.22 590.62l0.79 0 0 0.4 -0.79 0 0 -0.4zm0.79 -557.36l0 557.36 -0.79 0 0 -557.36 0.79 0zm0 0l-0.79 0 0 -0.4 0.79 0 0 0.4z"/>
+  </g>
+  <g>
+   <path fill="#262626" fill-rule="nonzero" d="M768.9 590.62l0.79 0 0 0.4 -0.79 0 0 -0.4zm0.79 -557.36l0 557.36 -0.79 0 0 -557.36 0.79 0zm0 0l-0.79 0 0 -0.4 0.79 0 0 0.4z"/>
+  </g>
+  <g transform="matrix(1 0 0 1 -61.6126 -311.229)">
+   <text x="400" y="323.91"  fill="black" font-weight="normal" font-size="17.41px" font-family="Arial">Before adjustment</text>
+  </g>
+  <g transform="matrix(1 0 0 1 -35.4918 313.417)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="17.41px" font-family="Arial">Dispersion, m</text>
+  </g>
+  <polyline fill="none" stroke="#0071BC" stroke-width="0.79" stroke-linejoin="round" stroke-miterlimit="22.9256" points="66.56,573.2 68.42,555.78 102.24,538.37 102.61,520.95 114.45,503.53 115.25,486.11 118.68,468.7 120.55,451.28 121.65,433.86 126.02,416.44 132.14,399.03 154.65,381.61 155.95,364.19 172.01,346.77 180.13,329.36 183.83,311.94 187.33,294.52 190.85,277.1 193.6,259.69 218.44,242.27 227.32,224.85 233.81,207.43 261.21,190.01 262.87,172.6 309.57,155.18 316.51,137.76 356.01,120.35 363.99,102.93 380.74,85.51 380.93,68.09 451.8,50.67 755.91,33.26 "/>
+  <polyline fill="none" stroke="#D85218" stroke-width="0.79" stroke-linejoin="round" stroke-miterlimit="22.9256" stroke-dasharray="0.790000 2.370000" points="62.62,311.94 183.83,311.94 183.83,590.62 "/>
+  <polygon fill="#D85218" points="63.41,313.31 61.83,313.31 61.04,311.94 61.83,310.57 63.41,310.57 64.2,311.94 64.2,311.94 "/>
+  <polygon fill="#D85218" points="184.62,313.31 183.04,313.31 182.25,311.94 183.04,310.57 184.62,310.57 185.41,311.94 185.41,311.94 "/>
+  <polygon fill="#D85218" points="184.62,591.99 183.04,591.99 182.25,590.62 183.04,589.25 184.62,589.25 185.41,590.62 185.41,590.62 "/>
+  <polygon fill="red" points="187.67,314.73 185.3,316.46 182.36,316.46 179.99,314.73 179.08,311.94 179.99,309.15 182.36,307.42 185.3,307.42 187.67,309.15 188.58,311.94 "/>
+  <polyline fill="none" stroke="yellow" stroke-width="0.79" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="22.9256" points="188.58,311.94 187.67,314.73 185.3,316.46 182.36,316.46 179.99,314.73 179.08,311.94 179.99,309.15 182.36,307.42 185.3,307.42 187.67,309.15 188.58,311.94 "/>
+  <g transform="matrix(2.64845E-14 -1 1 2.64845E-14 -311.439 759.96)">
+   <text x="400" y="323.91"  fill="#262626" font-weight="normal" font-size="17.41px" font-family="Arial">Distribution</text>
+  </g>
+ </g>
+</svg>
