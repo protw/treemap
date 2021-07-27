@@ -1,0 +1,47 @@
+created: 20210727125524231
+modified: 20210727145302668
+tags: soft tool
+title: Польоти наяву та уві сні
+
+Ми поставили собі задачу пройтись по технологічному ланцюгу фотограмметрії, а саме:
+
+* облітати з аерофотозйомкою об'ект;
+* побудувати 3D-модель об'єкта;
+* побудувати відео-анімацію моделі, тобто віртуальний обліт моделі об'єкта;
+* вбудувати модель в окремий цифровий документ, наприклад, PDF-формат;
+* опублікувати 3D-модель об'єкта на власному інтернет-ресурсі, вбудувати мітки з текстом і точки переходу, так щоб вийшла віртуальна екскурсія.
+
+Отже, починаємо.
+
+У якості об'єкта була обрана Свято-Успенська Церква ПЦУ, Капітанівка, Київська обл.
+
+<center><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1436.637692520161!2d30.1825402!3d50.4430449!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x472b35b425a7232b%3A0x946f9a6e85b676b9!2z0KHQstGP0YLQvi3Qo9GB0L_QtdC90YHRjNC60LAg0KbQtdGA0LrQstCwINCf0KbQow!5e1!3m2!1suk!2sua!4v1627394221466!5m2!1suk!2sua" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></center>
+
+Аерофотозйомку об'єкта виконали 16 липня 2021 року з допомогою дрону DJI  Phantom 3. 
+
+Це повна 360 панорама, зроблена камерою GoPro MAX.
+
+<center><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D4149056751846197%26set%3Da.565888020163106%26type%3D3&show_text=false&width=640" width="640" height="300" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></center>
+
+Це частина кубічної проєкції цієї ж панорами.
+
+<center><iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fphoto.php%3Ffbid%3D4149056538512885%26set%3Da.565888020163106%26type%3D3&show_text=false&width=640" width="640" height="200" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe></center>
+
+Всього було зроблено два обльоти на різних висотах і один обхід на рівні поверхні землі. У підсумку зроблено 189 знімків.
+
+Зрештою за допомогою видаленого сервера нашого колеги Сергія Кодьева (24 ГБ ОЗУ і ГПУ nVidia GeForce GTX 1080) за декілька годин була побудована 3D-модель. А потім на її основі побудована відео-анімація.
+
+<center><iframe width="720" height="405" src="https://www.youtube.com/embed/f4TjzmpufQI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+
+На сьогодні для завершення поставленого завдання залишилось:
+
+* вбудувати модель в окремий цифровий документ, наприклад, PDF-формат;
+* опублікувати 3D-модель об'єкта на власному інтернет-ресурсі, вбудувати мітки з текстом і точки переходу, так щоб вийшла віртуальна екскурсія.
+
+!! Подяки
+
+Без участі цих людей цей матеріал не з'явився б:
+
+* [[Сергій Кодьєв|https://www.facebook.com/kodiev]]
+* [[Євген Бовсуновський|https://www.facebook.com/evgebov]]
+* [[Олег Бондаренко|https://www.facebook.com/olegh.bondarenko]]
